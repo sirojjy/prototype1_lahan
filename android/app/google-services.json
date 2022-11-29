@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "307057385771",
+    "project_id": "prototype1lahan",
+    "storage_bucket": "prototype1lahan.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:307057385771:android:37b1d4ae8f1fcbdb3b256e",
+        "android_client_info": {
+          "package_name": "com.example.prototype1_lahan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "307057385771-82d4o26mkg19gfgqiukpnoldo9j3ih0c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-7xnWK1PX_u3c-xdfrlci44atKrNfHN8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "307057385771-82d4o26mkg19gfgqiukpnoldo9j3ih0c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
