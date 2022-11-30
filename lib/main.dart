@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:prototype1_lahan/inventarisasi/bloc/inven_bloc.dart';
 import 'package:prototype1_lahan/inventarisasi/inventarisasi.dart';
-
 import 'dashboard/dashboard.dart';
 import 'share/routes.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  runApp(
+      MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (BuildContext context) =>InvenBloc())
+        ],
+        child: const MyApp(),
+      )
+  );
 }
 
 class MyApp extends StatelessWidget {

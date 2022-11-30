@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:prototype1_lahan/dashboard/DokumenInfo.dart';
 
 import '../inventarisasi/inventarisasi.dart';
+import '../share/custom_appbar.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -10,9 +11,7 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Inventarisasi"),
-      ),
+      appBar: CustomAppBar(judulMenu: 'Dashboard',),
       body: SafeArea(
         child: SingleChildScrollView(
           primary: false,

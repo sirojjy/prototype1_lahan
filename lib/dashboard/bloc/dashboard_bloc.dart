@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:html';
+// import 'dart:html';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
@@ -23,13 +23,6 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
           status: DashboardStateStatus.loading
         )
       );
-
-      // try{
-      //   if(
-      //   var url = Uri.parse
-      //   )
-      // }
-
     }
   }
 }

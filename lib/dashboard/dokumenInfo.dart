@@ -11,30 +11,31 @@ class DokumenInfo extends StatelessWidget {
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
+          children: const [
             Text('Tahapan'),
 
           ],
         ),
-        SizedBox(height: 10,),
-        Container(
-          
-          padding: EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            color: Color(0xffececec),
-            borderRadius: const BorderRadius.all(Radius.circular(10)),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 1,
-                blurRadius: 3,
-                offset: Offset(0, 3),
-              )],
-          ),
-          child: GestureDetector(
-            onTap: () => {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Inventarisasi()))
-            },
+        const SizedBox(height: 10,),
+        GestureDetector(
+        onTap: () => {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const Inventarisasi()))
+        },
+          child: Container(
+
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: const Color(0xffececec),
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 1,
+                  blurRadius: 3,
+                  offset: const Offset(0, 3),
+                )],
+            ),
+
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -43,22 +44,21 @@ class DokumenInfo extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       height: 40,
                       width: 40,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Color(0xff208aee),
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                       ),
-                      child: SvgPicture.asset("assets/icons/Documents.svg", color: Color(
-                          0xffffffff),),
+                      child: SvgPicture.asset("assets/icons/Documents.svg", color: const Color(0xffffffff),),
                     ),
-                    Text("500",style: TextStyle(fontWeight: FontWeight.w700),),
+                    const Text("500 Bidang",style: TextStyle(fontWeight: FontWeight.w700),),
 
                   ],
                 ),
                 Row(
-                  children: [
+                  children: const [
                     Text(
                       "Inventarisasi",
                       style: TextStyle(
@@ -68,21 +68,21 @@ class DokumenInfo extends StatelessWidget {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
+                  children: const [
                     Text("Data Lengkap:"),
-                    Text("300")
+                    Text("300 Bidang")
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
+                  children: const [
                     Text("Data Kurang:"),
-                    Text("200")
+                    Text("200 Bidang")
                   ],
                 ),
               ],
             ),
-          )
+          ),
         )
       ],
     );
