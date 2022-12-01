@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:prototype1_lahan/inventarisasi/bloc/inven_bloc.dart';
 import 'package:prototype1_lahan/share/custom_appbar.dart';
 import 'package:prototype1_lahan/share/image_picker.dart';
@@ -13,6 +15,7 @@ class Inventarisasi extends StatefulWidget {
 }
 
 class _InventarisasiState extends State<Inventarisasi> {
+
   final TextEditingController _namaController = TextEditingController();
   final TextEditingController _nibController = TextEditingController();
   final TextEditingController _nikController = TextEditingController();
@@ -39,95 +42,67 @@ class _InventarisasiState extends State<Inventarisasi> {
               children: [
                 TextField(
                   controller: _namaController,
-                  decoration: const InputDecoration(labelText: 'namaPemilik'),
+                  decoration: const InputDecoration(labelText: 'Nama Pemilik'),
                 ),
                 TextField(
                   keyboardType:
                       const TextInputType.numberWithOptions(decimal: true),
                   controller: _nibController,
                   decoration: const InputDecoration(
-                    labelText: 'nib',
+                    labelText: 'NIB',
                   ),
                 ),
                 TextField(
                   controller: _nikController,
-                  decoration: const InputDecoration(labelText: 'nik'),
+                  decoration: const InputDecoration(labelText: 'NIK'),
                 ),
                 TextField(
                   controller: _traseController,
-                  decoration: const InputDecoration(labelText: 'trase'),
+                  decoration: const InputDecoration(labelText: 'Trase'),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
 
-                // Container(
-                //     child: imageFile == null
-                //         ? Container(
-                //       alignment: Alignment.center,
-                //       child: Column(
-                //         mainAxisAlignment: MainAxisAlignment.center,
-                //         children: <Widget>[
-                //           ElevatedButton(
-                //             style: ElevatedButton.styleFrom(
-                //               backgroundColor: Colors.lightGreenAccent,
-                //             ),
-                //             onPressed: () {
-                //               GetFromGallery();
-                //             },
-                //             child: Text("PICK FROM GALLERY"),
-                //           ),
-                //           Container(
-                //             height: 40.0,
-                //           ),
-                //           ElevatedButton(
-                //             style: ElevatedButton.styleFrom(
-                //               backgroundColor: Colors.lightGreenAccent,
-                //             ),
-                //
-                //             onPressed: () {
-                //               GetFromCamera();
-                //             },
-                //             child: Text("PICK FROM CAMERA"),
-                //           )
-                //         ],
-                //       ),
-                //     ): Container(
-                //       child: Image.file(
-                //         imageFile,
-                //         fit: BoxFit.cover,
-                //       ),
-                //     )
-                // ),
-
                 const SizedBox(
                   height: 20,
                 ),
-                ElevatedButton(
-                  child: const Text('Create'),
-                  onPressed: () async {
-                    final String namaPemilik = _namaController.text;
-                    final String? nib = _nibController.text;
-                    final String? nik = _nikController.text;
-                    final String? trase = _traseController.text;
-                    // final String? file = _fileController.text;
-                    if (nib != null) {
-                      BlocProvider.of<InvenBloc>(context).add(AddInvenEvent(
-                        namaPemilik: namaPemilik,
-                        nib: nib,
-                        nik: nik,
-                        trase: trase,
-                        // file: file,
-                      ));
-                      _namaController.text = '';
-                      _nibController.text = '';
-                      _nikController.text = '';
-                      _traseController.text = '';
-                      // _fileController.text = '';
-                      Navigator.of(context).pop();
-                    }
-                  },
+                Center(
+                  child: ElevatedButton(
+                      onPressed: () => {
+                        // Navigator.push(context, MaterialPageRoute(builder: (context) =>  ImagePicker()))
+                      },
+                      child: Text('Tambah Gambar')
+                  ),
+                ),
+                Center(
+                  child: ElevatedButton(
+                    child: const Text('Create'),
+                    onPressed: () async {
+                      final String namaPemilik = _namaController.text;
+                      final String? nib = _nibController.text;
+                      final String? nik = _nikController.text;
+                      final String? trase = _traseController.text;
+                      // final String? file = _fileController.text;
+                      if (nib != null) {
+                        BlocProvider.of<InvenBloc>(context).add(AddInvenEvent(
+                          namaPemilik: namaPemilik,
+                          nib: nib,
+                          nik: nik,
+                          trase: trase,
+                          // file: file,
+                        ));
+                        _namaController.text = '';
+                        _nibController.text = '';
+                        _nikController.text = '';
+                        _traseController.text = '';
+                        // _fileController.text = '';
+                        Navigator.of(context).pop();
+                      }
+                    },
+                  ),
                 )
+
               ],
             ),
           );
@@ -163,25 +138,22 @@ class _InventarisasiState extends State<Inventarisasi> {
               children: [
                 TextField(
                   controller: _namaController,
-                  decoration: const InputDecoration(labelText: 'namaPemilik'),
+                  decoration: const InputDecoration(labelText: 'Nama Pemilik'),
                 ),
                 TextField(
-                  // keyboardType:
-                  //     const TextInputType.numberWithOptions(decimal: true),
+
                   controller: _nibController,
-                  decoration: const InputDecoration(labelText: 'nib',),
+                  decoration: const InputDecoration(labelText: 'NIB',),
                 ),
                 TextField(
-                  // keyboardType:
-                  //     const TextInputType.numberWithOptions(decimal: true),
+
                   controller: _nikController,
-                  decoration: const InputDecoration(labelText: 'nik',),
+                  decoration: const InputDecoration(labelText: 'NIK',),
                 ),
                 TextField(
-                  // keyboardType:
-                  //     const TextInputType.numberWithOptions(decimal: true),
+
                   controller: _traseController,
-                  decoration: const InputDecoration(labelText: 'trase',),
+                  decoration: const InputDecoration(labelText: 'Trase',),
                 ),
                 const SizedBox(
                   height: 20,
@@ -232,8 +204,8 @@ class _InventarisasiState extends State<Inventarisasi> {
               children: [
                 Row(
                   children: [
-                    const Expanded(
-                      child: Text("Tabel Inventarisasi"),
+                     Expanded(
+                      child: Text(" "),
                     ),
                     ElevatedButton(
                       onPressed: () => _create(),
@@ -261,8 +233,18 @@ class _InventarisasiState extends State<Inventarisasi> {
                                   subtitle: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text(documentSnapshot['nib']),
-                                      Text(documentSnapshot['trase']),
+                                      Row(
+                                        children: [
+                                          Text('NIB: '),
+                                          Text(documentSnapshot['nib']),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Text('Trase: '),
+                                          Text(documentSnapshot['trase']),
+                                        ],
+                                      ),
                                     ],
                                   ),
                                   trailing: SizedBox(

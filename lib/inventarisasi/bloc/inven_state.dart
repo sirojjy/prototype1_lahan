@@ -18,7 +18,7 @@ class InvenState extends Equatable {
     this.noAlasHak,
     this.jenisHak,
     this.trase,
-    this.file,
+    this.fileUrl,
     this.status = InvenStateStatus.initial,
   });
 
@@ -29,7 +29,7 @@ class InvenState extends Equatable {
   final String? noAlasHak;
   final String? jenisHak;
   final String? trase;
-  final String? file;
+  final String? fileUrl;
   final InvenStateStatus status;
 
 
@@ -42,7 +42,7 @@ class InvenState extends Equatable {
     noAlasHak,
     jenisHak,
     trase,
-    file,
+    fileUrl,
     status,
   ];
 
@@ -65,7 +65,7 @@ class InvenState extends Equatable {
       noAlasHak: noAlasHak?? this.noAlasHak,
       jenisHak: jenisHak?? this.jenisHak,
       trase: trase?? this.trase,
-      file: file?? this.file,
+      fileUrl: file?? this.fileUrl,
       status: status?? this.status,
     );
   }

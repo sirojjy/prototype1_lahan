@@ -14,12 +14,12 @@ class AddInvenEvent extends InvenEvent {
   final String? noAlasHak;
   final String? jenisHak;
   final String? trase;
-  final String? file;
+  final String? fileUrl;
 
-  AddInvenEvent({this.namaPemilik, this.nib, this.nik, this.alamat, this.noAlasHak, this.jenisHak, this.trase, this.file});
+  AddInvenEvent({this.namaPemilik, this.nib, this.nik, this.alamat, this.noAlasHak, this.jenisHak, this.trase, this.fileUrl});
 
   @override
-  List<Object?> get props => [namaPemilik, nib, nik, alamat, noAlasHak, jenisHak, trase, file];
+  List<Object?> get props => [namaPemilik, nib, nik, alamat, noAlasHak, jenisHak, trase, fileUrl];
 }
 
 class UpdateInvenEvent extends InvenEvent {
