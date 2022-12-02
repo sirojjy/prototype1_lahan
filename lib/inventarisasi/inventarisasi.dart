@@ -1,11 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:prototype1_lahan/inventarisasi/bloc/inven_bloc.dart';
 import 'package:prototype1_lahan/share/custom_appbar.dart';
-import 'package:prototype1_lahan/share/image_picker.dart';
 
 class Inventarisasi extends StatefulWidget {
   const Inventarisasi({Key? key}) : super(key: key);
@@ -25,7 +22,7 @@ class _InventarisasiState extends State<Inventarisasi> {
   final CollectionReference _inventarisasi =
       FirebaseFirestore.instance.collection('inventarisasi');
 
-  Future<void> _create([DocumentSnapshot? documentSnapshot]) async {
+  Future<void> _create() async {
     await showModalBottomSheet(
         isScrollControlled: true,
         context: context,
@@ -72,7 +69,7 @@ class _InventarisasiState extends State<Inventarisasi> {
                       onPressed: () => {
                         // Navigator.push(context, MaterialPageRoute(builder: (context) =>  ImagePicker()))
                       },
-                      child: Text('Tambah Gambar')
+                      child: const Text('Tambah Gambar')
                   ),
                 ),
                 Center(
@@ -204,7 +201,7 @@ class _InventarisasiState extends State<Inventarisasi> {
               children: [
                 Row(
                   children: [
-                     Expanded(
+                      Expanded(
                       child: Text(" "),
                     ),
                     ElevatedButton(
@@ -235,13 +232,13 @@ class _InventarisasiState extends State<Inventarisasi> {
                                     children: [
                                       Row(
                                         children: [
-                                          Text('NIB: '),
+                                          const Text('NIB: '),
                                           Text(documentSnapshot['nib']),
                                         ],
                                       ),
                                       Row(
                                         children: [
-                                          Text('Trase: '),
+                                          const Text('Trase: '),
                                           Text(documentSnapshot['trase']),
                                         ],
                                       ),

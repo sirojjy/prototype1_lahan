@@ -13,12 +13,12 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return PreferredSize(
         child: AppBar(
-          backgroundColor: Color(0xff0CACFF),
+          backgroundColor: const Color(0xff0CACFF),
           leading: Padding(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: ClipRRect(
               child:
-              SvgPicture.asset("assets/icons/menu_task.svg", color: Color(0xffffffff),),
+              SvgPicture.asset("assets/icons/menu_task.svg", color: const Color(0xffffffff),),
               // Image.asset(
               //   'assets/images/logo_qai.jpg',
               //   scale: 1,
@@ -29,13 +29,13 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
           ),
           title: Text(
             '$judulMenu',
-            style: TextStyle(fontSize: 18),
+            style: const TextStyle(fontSize: 18),
           ),
           actions: [
-            Container(
+            SizedBox(
               width: 50,
               child: IconButton(
-                icon: Icon(Icons.person),
+                icon: const Icon(Icons.person),
                 onPressed: (){
                   // Navigator.push(context, MaterialPageRoute(builder: (context) => ()));
                 },

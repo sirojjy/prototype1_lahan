@@ -3,7 +3,7 @@ part of 'inven_bloc.dart';
 class InvenEvent extends Equatable {
   @override
   List<Object?> get props =>[];
-  InvenEvent();
+  const InvenEvent();
 }
 
 class AddInvenEvent extends InvenEvent {
@@ -16,7 +16,7 @@ class AddInvenEvent extends InvenEvent {
   final String? trase;
   final String? fileUrl;
 
-  AddInvenEvent({this.namaPemilik, this.nib, this.nik, this.alamat, this.noAlasHak, this.jenisHak, this.trase, this.fileUrl});
+  const AddInvenEvent({this.namaPemilik, this.nib, this.nik, this.alamat, this.noAlasHak, this.jenisHak, this.trase, this.fileUrl});
 
   @override
   List<Object?> get props => [namaPemilik, nib, nik, alamat, noAlasHak, jenisHak, trase, fileUrl];
@@ -33,7 +33,7 @@ class UpdateInvenEvent extends InvenEvent {
   final String? trase;
   final String? file;
 
-  UpdateInvenEvent({this.id, this.namaPemilik, this.nib, this.nik, this.alamat, this.noAlasHak, this.jenisHak, this.trase, this.file});
+  const UpdateInvenEvent({this.id, this.namaPemilik, this.nib, this.nik, this.alamat, this.noAlasHak, this.jenisHak, this.trase, this.file});
 
   @override
   List<Object?> get props => [id, namaPemilik, nib, nik, alamat, noAlasHak, jenisHak, trase, file];
@@ -42,5 +42,5 @@ class UpdateInvenEvent extends InvenEvent {
 class DeleteInventEvent extends InvenEvent {
   final String? id;
 
-  DeleteInventEvent({this.id});
+  const DeleteInventEvent({this.id});
 }

@@ -1,12 +1,7 @@
-import 'dart:io';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:path/path.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:prototype1_lahan/share/custom_appbar.dart';
-import 'package:prototype1_lahan/share/routes.dart';
 
 
 class ImagePicker extends StatefulWidget {
@@ -24,7 +19,7 @@ class _ImagePickerState extends State<ImagePicker> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(judulMenu: 'Image Picker',),
+      appBar: const CustomAppBar(judulMenu: 'Image Picker',),
       body: Container(
         child: Center(
           child: Column(
@@ -35,7 +30,7 @@ class _ImagePickerState extends State<ImagePicker> {
               height: 100,
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.black54),
-                image: DecorationImage(
+                image: const DecorationImage(
                   image: NetworkImage("assets/images/logo.png"),
                   fit: BoxFit.cover,
                 ),
@@ -51,7 +46,7 @@ class _ImagePickerState extends State<ImagePicker> {
               child: SvgPicture.asset("assets/icons/menu_task.svg",),
             ),
               ElevatedButton(
-                child: Text('Ambil Gambar',),
+                child: const Text('Ambil Gambar',),
                 onPressed: () {},
               )
             ],

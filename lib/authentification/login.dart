@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prototype1_lahan/dashboard/dashboard.dart';
 import 'package:prototype1_lahan/share/item.dart';
@@ -23,9 +22,9 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               //Logo
               Text(
-                'E - Lahan',
+                'E - Lahan IKN',
                 style: GoogleFonts.bebasNeue(
-                  textStyle: TextStyle(
+                  textStyle: const TextStyle(
                     fontSize: 40
                   ),
                 )
@@ -36,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
                Text(
                 'Halo! Silahkan Login',
                 style: GoogleFonts.bebasNeue(
-                  textStyle: TextStyle(
+                  textStyle: const TextStyle(
                       fontSize: 24
                   ),
                 ),
@@ -92,10 +91,10 @@ class _LoginPageState extends State<LoginPage> {
 
               //Sign in button
               Padding(padding:
-                 EdgeInsets.symmetric(horizontal: 25.0),
+                 const EdgeInsets.symmetric(horizontal: 25.0),
                 child: GestureDetector(
                   onTap: () => {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context){ return Dashboard();}))
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context){ return const Dashboard();}))
                   },
                   child: Container(
                     padding: const EdgeInsets.all(20),

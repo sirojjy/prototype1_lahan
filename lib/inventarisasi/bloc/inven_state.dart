@@ -65,7 +65,7 @@ class InvenState extends Equatable {
       noAlasHak: noAlasHak?? this.noAlasHak,
       jenisHak: jenisHak?? this.jenisHak,
       trase: trase?? this.trase,
-      fileUrl: file?? this.fileUrl,
+      fileUrl: file?? fileUrl,
       status: status?? this.status,
     );
   }
