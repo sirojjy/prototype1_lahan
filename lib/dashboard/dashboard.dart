@@ -30,6 +30,7 @@ class Dashboard extends StatelessWidget {
                   child: PageView(
                     scrollDirection: Axis.horizontal,
                     controller: _controller,
+                    // pageSnapping: false,
                     children: const [
                       MyCard(
                           titleCard: 'IPAL',
@@ -70,9 +71,7 @@ class Dashboard extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     controller: _controller,
                     children: const [
-                      IssueCard(),
-                      IssueCard(),
-                      IssueCard(),
+                      IssueCard()
                     ],
                   ),
                 ),

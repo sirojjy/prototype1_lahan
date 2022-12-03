@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class IssueCard extends StatefulWidget {
+
   const IssueCard({Key? key}) : super(key: key);
 
   @override
@@ -9,27 +10,13 @@ class IssueCard extends StatefulWidget {
 }
 
 class _IssueCardState extends State<IssueCard> {
-  // final String judulData1;
-  // final String judulData2;
-  // final String judulData3;
-  //
-  // final int data1;
-  // final int data2;
-  // final int data3;
 
 
-  late List<IssueData> _chartData;
-  late TooltipBehavior _tooltipBehavior;
 
-  _IssueCardState(
-      // this.judulData1,
-      // this.judulData2,
-      // this.judulData3,
-      //
-      // this.data1,
-      // this.data2,
-      // this.data3
-      );
+  var _chartData;
+  var _tooltipBehavior;
+
+  _IssueCardState();
 
   @override
   void initState() {
@@ -73,21 +60,29 @@ class _IssueCardState extends State<IssueCard> {
     );
   }
 
-  List <IssueData> getChartData() {
-    final List<IssueData> chartData = [
-      IssueData('IPAL1', 2000),
-      IssueData('IPAL2', 1500),
-      IssueData('IPAL3', 700),
-    ];
-    return chartData;
+  List<IssueData> getChartData() {
+    var  chartData = <IssueData>[];
 
+    var listData = [
+      {'IPAL': 2000, 'label': 'IPAL1'},
+      {'IPAL': 1500, 'label': 'IPAL2'},
+      {'IPAL': 700, 'label': 'IPAL3'}
+    ];
+    for(var i = 0; i<listData.length; i++){
+      chartData.add(IssueData(
+          jenis:listData[i]['label'].toString(),
+          jumlahIssue:double.parse(listData[i]['IPAL'].toString())
+      ));
+    }
+
+    return chartData;
   }
 }
 
 
 class IssueData {
-  final String jenis;
-  final int jumlahIssue;
+  final String? jenis;
+  final double? jumlahIssue;
 
-  IssueData(this.jenis, this.jumlahIssue);
+  IssueData({this.jenis, this.jumlahIssue});
 }
