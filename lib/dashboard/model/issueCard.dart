@@ -28,9 +28,9 @@ class _IssueCardState extends State<IssueCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+        padding: const EdgeInsets.symmetric(horizontal: 10.0),
         child: Container(
-          width: 300,
+          // width: 300,
           // padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),

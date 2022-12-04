@@ -6,6 +6,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../share/item.dart';
 import 'model/tabel_bidang_card.dart';
+import 'model/tabel_issue_card.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -29,6 +30,7 @@ class Dashboard extends StatelessWidget {
                   height: 150,
                   child: PageView(
                     scrollDirection: Axis.horizontal,
+                    physics: PageScrollPhysics(),
                     controller: _controller,
                     // pageSnapping: false,
                     children: const [
@@ -53,7 +55,7 @@ class Dashboard extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 20,),
+                const SizedBox(height: 10,),
 
                 SmoothPageIndicator(
                   controller: _controller,
@@ -78,8 +80,14 @@ class Dashboard extends StatelessWidget {
                 SizedBox(height: 20,),
 
                 SizedBox(
-                  height: 400,
                   child: TabelBidangCard(),
+                ),
+                SizedBox(height: 20,),
+
+                //Tabel Issue
+                SizedBox(
+                  height: 400,
+                  child: TabelIssueCard(),
                 )
 
               ],
