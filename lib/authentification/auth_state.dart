@@ -10,16 +10,15 @@ extension AuthStateStatusX on AuthStateStatus{
 }
 
 class AuthState extends Equatable {
-  final AuthStateStatus status;
+  final AuthStateStatus? status;
   final String? username;
   final String? password;
   final String? message;
 
-  const AuthState(
-      this.status,
-      this.username,
-      this.password,
-      this.message
+  const AuthState({this.status,
+    this.username,
+    this.password,
+    this.message}
       );
 
   @override
@@ -31,27 +30,28 @@ class AuthState extends Equatable {
     message,
   ];
 
-  AuthState copyWith({
-    AuthStateStatus? status,
-      String? username,
-      String? password,
-      String? message,
-  }) {
-    return AuthState(status!, username, password, message);
-  }
-
   // AuthState copyWith({
   //   AuthStateStatus? status,
-  //   String? username,
-  //   String? password,
-  //   String? message,
-  // }) {
-  //   return AuthState(
-  //     status: status ?? this.status,
-  //     username: username ?? this.username,
-  //     password: password ?? this.password,
-  //     message: message ?? this.message,
-  //   );
+  //     String? username,
+  //     String? password,
+  //     String? message,
+  // })
+  // {
+  //   return AuthState(status!, username, password, message);
   // }
+
+  AuthState copyWith({
+    AuthStateStatus? status,
+    String? username,
+    String? password,
+    String? message,
+  }) {
+    return AuthState(
+      status: status ?? this.status,
+      username: username ?? this.username,
+      password: password ?? this.password,
+      message: message ?? this.message,
+    );
+  }
 }
 

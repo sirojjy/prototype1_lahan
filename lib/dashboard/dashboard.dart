@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:prototype1_lahan/dashboard/model/issueCard.dart';
 import 'package:prototype1_lahan/dashboard/model/myCard.dart';
+import 'package:prototype1_lahan/inventarisasi/inventarisasi.dart';
 import 'package:prototype1_lahan/share/appbarNew.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -24,6 +25,7 @@ class Dashboard extends StatelessWidget {
               children: [
                 //appbar
                 const AppbarNew(title: 'Dashboard'),
+                SizedBox(height: 20,),
 
                 //card
                 SizedBox(
@@ -85,10 +87,18 @@ class Dashboard extends StatelessWidget {
                 SizedBox(height: 20,),
 
                 //Tabel Issue
-                SizedBox(
-                  height: 400,
-                  child: TabelIssueCard(),
-                )
+
+                GestureDetector(
+                  onTap: () => {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const Inventarisasi()))
+                  },
+                  child: SizedBox(
+                    // height: 400,
+                    child: TabelIssueCard(),
+                  ),
+                ),
+
+                SizedBox(height: 20,)
 
               ],
             ),

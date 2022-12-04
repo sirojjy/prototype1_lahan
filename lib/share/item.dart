@@ -8,4 +8,5 @@ const darkColor = Color(0xFF003F8C);
 const whiteColor = Color(0xFFFFFFFF);
 const blackColor = Color(0xFF1F1F1F);
 const backgroundColor = Color(0xFFF5F4FF);
+const warningColor = Color(0xFFE53310);
 

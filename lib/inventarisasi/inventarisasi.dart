@@ -1,8 +1,13 @@
+import 'dart:ffi';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:prototype1_lahan/inventarisasi/bloc/inven_bloc.dart';
 import 'package:prototype1_lahan/share/custom_appbar.dart';
+
+import '../share/appbarNew.dart';
+import '../share/item.dart';
 
 class Inventarisasi extends StatefulWidget {
   const Inventarisasi({Key? key}) : super(key: key);
@@ -27,12 +32,16 @@ class _InventarisasiState extends State<Inventarisasi> {
         isScrollControlled: true,
         context: context,
         builder: (BuildContext ctx) {
-          return Padding(
+          return Container(
             padding: EdgeInsets.only(
                 top: 20,
                 left: 20,
                 right: 20,
                 bottom: MediaQuery.of(ctx).viewInsets.bottom + 20),
+            decoration: BoxDecoration(
+              color: whiteColor,
+              borderRadius: BorderRadius.circular(15),
+            ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,7 +52,7 @@ class _InventarisasiState extends State<Inventarisasi> {
                 ),
                 TextField(
                   keyboardType:
-                      const TextInputType.numberWithOptions(decimal: true),
+                  const TextInputType.numberWithOptions(decimal: true),
                   controller: _nibController,
                   decoration: const InputDecoration(
                     labelText: 'NIB',
@@ -192,88 +201,119 @@ class _InventarisasiState extends State<Inventarisasi> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
-          appBar: const CustomAppBar(judulMenu: 'Daftar Inventarisasi',),
-          body: Container(
-            padding: const EdgeInsets.all(10),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                      Expanded(
-                      child: Text(" "),
-                    ),
-                    ElevatedButton(
-                      onPressed: () => _create(),
-                      child: const Icon(Icons.add),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Expanded(
-                  child: StreamBuilder(
-                    stream: _inventarisasi.snapshots(), //build connection
-                    builder: (context, AsyncSnapshot<QuerySnapshot> streamSnapshot) {
-                      if (streamSnapshot.hasData) {
-                        return ListView.builder(
-                            itemCount: streamSnapshot.data!.docs.length,
-                            itemBuilder: (context, index) {
-                              final DocumentSnapshot documentSnapshot =
-                              streamSnapshot.data!.docs[index];
-                              return Card(
-                                margin: const EdgeInsets.all(10),
-                                child: ListTile(
-                                  title: Text(documentSnapshot['namaPemilik']),
-                                  subtitle: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          const Text('NIB: '),
-                                          Text(documentSnapshot['nib']),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          const Text('Trase: '),
-                                          Text(documentSnapshot['trase']),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  trailing: SizedBox(
-                                    width: 100,
-                                    child: Row(
+    return Scaffold(
+      body: SafeArea(
+          child: SingleChildScrollView(
+            child: Container(
+                height: MediaQuery.of(context).size.height,
+                padding: const EdgeInsets.all(10),
+                child:
+              Column(
+                children: [
+                  // Row(
+                  //   children: [
+                  //       Expanded(
+                  //       child: Text(" "),
+                  //     ),
+                  //     ElevatedButton(
+                  //       onPressed: () => _create(),
+                  //       child: const Icon(Icons.add),
+                  //     ),
+                  //   ],
+                  // ),
+                  // const SizedBox(
+                  //   height: 10,
+                  // ),
+                  const AppbarNew(title: 'Inventarisasi'),
+
+                  SizedBox(height: 20,),
+
+                  Expanded(
+                    child: StreamBuilder(
+                      stream: _inventarisasi.snapshots(), //build connection
+                      builder: (context, AsyncSnapshot<QuerySnapshot> streamSnapshot) {
+                        if (streamSnapshot.hasData) {
+                          return ListView.builder(
+                              itemCount: streamSnapshot.data!.docs.length,
+                              itemBuilder: (context, index) {
+                                final DocumentSnapshot documentSnapshot =
+                                streamSnapshot.data!.docs[index];
+                                return Card(
+                                  margin: const EdgeInsets.all(5.0),
+                                  child: ListTile(
+                                    title: Text(documentSnapshot['namaPemilik']),
+                                    subtitle: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        IconButton(
-                                          onPressed: () => _update(documentSnapshot),
-                                          icon: const Icon(Icons.edit),
+                                        Row(
+                                          children: [
+                                            const Text('NIB: '),
+                                            Text(documentSnapshot['nib']),
+                                          ],
                                         ),
-                                        IconButton(
-                                            onPressed: () {
-                                              BlocProvider.of<InvenBloc>(context).add(DeleteInventEvent(id: documentSnapshot.id));
-                                            },
-                                            icon: const Icon(Icons.delete)),
+                                        Row(
+                                          children: [
+                                            const Text('Trase: '),
+                                            Text(documentSnapshot['trase']),
+                                          ],
+                                        ),
                                       ],
                                     ),
+                                    trailing: SizedBox(
+                                      width: 155,
+                                      child: Row(
+                                        children: [
+                                          GestureDetector(
+                                            onTap: () => {},
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                  color: warningColor,
+                                                  borderRadius: BorderRadius.circular(5)
+                                              ),
+                                              padding: EdgeInsets.all(5),
+                                              child: Text('1 Issue', style: TextStyle(color: whiteColor),),
+                                            ),
+                                          ),
+                                          SizedBox(width: 20,),
+                                          GestureDetector(
+                                            onTap: () => {},
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                  color: primaryColor,
+                                                  borderRadius: BorderRadius.circular(5)
+                                              ),
+                                              padding: EdgeInsets.all(5),
+                                              child: Text('+ Issue', style: TextStyle(color: whiteColor),),
+                                            ),
+                                          ),
+                                          // IconButton(
+                                          //   onPressed: () => _update(documentSnapshot),
+                                          //   icon: const Icon(Icons.edit),
+                                          // ),
+                                          // IconButton(
+                                          //     onPressed: () {
+                                          //       BlocProvider.of<InvenBloc>(context).add(DeleteInventEvent(id: documentSnapshot.id));
+                                          //     },
+                                          //     icon: const Icon(Icons.delete)
+                                          // ),
+                                        ],
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              );
-                            });
-                      }
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    },
+                                );
+                              });
+                        }
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      },
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ),
+          )
+      ),
     );
   }
 }
