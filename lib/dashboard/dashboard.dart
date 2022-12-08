@@ -7,6 +7,7 @@ import 'package:prototype1_lahan/share/appbarNew.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../share/item.dart';
+import 'model/issue_bar.dart';
 import 'model/tabel_bidang_card.dart';
 import 'model/tabel_issue_card.dart';
 
@@ -83,12 +84,14 @@ class Dashboard extends StatelessWidget {
                       padding: const EdgeInsets.all(10.0),
                       child: Container(
                         // color: whiteColor,
-                        padding: const EdgeInsets.all(20),
+                        // padding: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
                           color: whiteColor,
                           borderRadius: BorderRadius.circular(15),
                         ),
-                        child: Column(
+                        child: ListView(
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
                           children: [
                             TabBar(
                               tabs: [
@@ -102,6 +105,7 @@ class Dashboard extends StatelessWidget {
                                   text: "DPPT",
                                 ),
                               ],
+
                               indicatorColor: primaryColor,
                               labelColor: blackColor,
                               indicator: MaterialIndicator(
@@ -113,39 +117,69 @@ class Dashboard extends StatelessWidget {
                               ),
                             ),
                             SizedBox(height: 10.0,),
+                            SizedBox(
+                              height: 800,
+                              child: TabBarView(
+                                children: [
+                                  Container(
+                                    child: ListView(
+                                      shrinkWrap: true,
+                                      physics: NeverScrollableScrollPhysics(),
+                                      children: [
+                                        SizedBox(
+                                            child:IssueCard()
+                                        ),
 
-                            Padding(padding: EdgeInsets.all(8.0)),
-                            
-                            TabBarView(children: [
-                              Icon(Icons.star),
-                              Icon(Icons.star),
-                              Icon(Icons.star),
-                            ]
+                                        SizedBox(height: 10,),
+
+                                        SizedBox(
+                                            child: TabelBidangCard()
+                                        ),
+
+                                        SizedBox(height: 10,),
+
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Container(
+                                            padding: EdgeInsets.all(10),
+                                            decoration: BoxDecoration(
+                                                color: Colors.redAccent[100],
+                                                borderRadius: BorderRadius.circular(10)
+                                            ),
+                                            child: Text(
+                                              'Terdapat 9 Issue pada kategori IPAL',
+                                              style: TextStyle(color: whiteColor),
+                                            ),
+                                          ),
+                                        ),
+
+                                        SizedBox(height: 10,),
+
+                                        IssueBar(),
+
+                                      ],
+                                    ),
+                                  ),
+
+                                  Icon(Icons.star),
+
+                                  Icon(Icons.star),
+                                ],
+                              ),
                             )
 
-                            
+
+                            // Container(
+                            //   // height: 700,
+                            //   child: ,
+                            // ),
                           ],
                         ),
                       ),
                     ),
-
                 ),
+                //END TABBAR
 
-                SizedBox(
-                  height: 300,
-                  child: PageView(
-                    scrollDirection: Axis.horizontal,
-                    controller: _controller,
-                    children: const [
-                      IssueCard()
-                    ],
-                  ),
-                ),
-                SizedBox(height: 20,),
-
-                SizedBox(
-                  child: TabelBidangCard(),
-                ),
                 SizedBox(height: 20,),
 
                 //Tabel Issue

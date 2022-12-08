@@ -13,9 +13,9 @@ class _TabelBidangCardState extends State<TabelBidangCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      padding: const EdgeInsets.symmetric(horizontal: 5.0),
       child: Container(
-        width: 400,
+        width: 500,
         // padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
           color: whiteColor,
