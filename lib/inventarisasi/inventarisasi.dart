@@ -48,42 +48,43 @@ class _InventarisasiState extends State<Inventarisasi> {
               children: [
                 TextField(
                   controller: _namaController,
-                  decoration: const InputDecoration(labelText: 'Nama Pemilik'),
+                  decoration: const InputDecoration(labelText: 'Issue'),
                 ),
-                TextField(
-                  keyboardType:
-                  const TextInputType.numberWithOptions(decimal: true),
-                  controller: _nibController,
-                  decoration: const InputDecoration(
-                    labelText: 'NIB',
-                  ),
-                ),
-                TextField(
-                  controller: _nikController,
-                  decoration: const InputDecoration(labelText: 'NIK'),
-                ),
-                TextField(
-                  controller: _traseController,
-                  decoration: const InputDecoration(labelText: 'Trase'),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
+                // TextField(
+                //   keyboardType:
+                //   const TextInputType.numberWithOptions(decimal: true),
+                //   controller: _nibController,
+                //   decoration: const InputDecoration(
+                //     labelText: 'NIB',
+                //   ),
+                // ),
+                // TextField(
+                //   controller: _nikController,
+                //   decoration: const InputDecoration(labelText: 'NIK'),
+                // ),
+                // TextField(
+                //   controller: _traseController,
+                //   decoration: const InputDecoration(labelText: 'Trase'),
+                // ),
+                // const SizedBox(
+                //   height: 10,
+                // ),
 
                 const SizedBox(
                   height: 20,
                 ),
+
+                // Center(
+                //   child: ElevatedButton(
+                //       onPressed: () => {
+                //         // Navigator.push(context, MaterialPageRoute(builder: (context) =>  ImagePicker()))
+                //       },
+                //       child: const Text('Tambah Gambar')
+                //   ),
+                // ),
                 Center(
                   child: ElevatedButton(
-                      onPressed: () => {
-                        // Navigator.push(context, MaterialPageRoute(builder: (context) =>  ImagePicker()))
-                      },
-                      child: const Text('Tambah Gambar')
-                  ),
-                ),
-                Center(
-                  child: ElevatedButton(
-                    child: const Text('Create'),
+                    child: const Text('Tambah Issue'),
                     onPressed: () async {
                       final String namaPemilik = _namaController.text;
                       final String? nib = _nibController.text;
@@ -115,6 +116,24 @@ class _InventarisasiState extends State<Inventarisasi> {
         });
   }
 
+  Future<void> _viewIssue() async {
+    await showModalBottomSheet(
+        isScrollControlled: true,
+        context: context,
+        builder: (BuildContext ctx){
+          return Container(
+            height: 400,
+              padding: const EdgeInsets.only(top: 20),
+            child: Card(
+              child: ListTile(
+                title: Text('Detail Issue'),
+              ),
+            ),
+          );
+    }
+    );
+  }
+
   Future<void> _update([DocumentSnapshot? documentSnapshot]) async {
     if (documentSnapshot != null) {
       print('oke');
@@ -142,6 +161,7 @@ class _InventarisasiState extends State<Inventarisasi> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Container(),
                 TextField(
                   controller: _namaController,
                   decoration: const InputDecoration(labelText: 'Nama Pemilik'),
@@ -264,7 +284,7 @@ class _InventarisasiState extends State<Inventarisasi> {
                                       child: Row(
                                         children: [
                                           GestureDetector(
-                                            onTap: () => {},
+                                            onTap: () => _viewIssue(),
                                             child: Container(
                                               decoration: BoxDecoration(
                                                   color: warningColor,
@@ -276,7 +296,7 @@ class _InventarisasiState extends State<Inventarisasi> {
                                           ),
                                           SizedBox(width: 20,),
                                           GestureDetector(
-                                            onTap: () => {},
+                                            onTap: () => _create(),
                                             child: Container(
                                               decoration: BoxDecoration(
                                                   color: primaryColor,

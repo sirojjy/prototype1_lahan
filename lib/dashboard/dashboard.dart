@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tab_indicator_styler/flutter_tab_indicator_styler.dart';
 import 'package:prototype1_lahan/dashboard/model/issueCard.dart';
 import 'package:prototype1_lahan/dashboard/model/myCard.dart';
 import 'package:prototype1_lahan/inventarisasi/inventarisasi.dart';
@@ -16,6 +17,12 @@ class Dashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     // Page Controller
     final _controller = PageController();
+    late TabController _tabController;
+    final _tabs = [
+      Tab(text: 'IPAL',),
+      Tab(text: 'SPAM',),
+      Tab(text: 'DPPT Terpadu',),
+    ];
 
     return Scaffold(
         backgroundColor: backgroundColor,
@@ -57,6 +64,7 @@ class Dashboard extends StatelessWidget {
                     ],
                   ),
                 ),
+
                 const SizedBox(height: 10,),
 
                 SmoothPageIndicator(
@@ -66,9 +74,63 @@ class Dashboard extends StatelessWidget {
                     activeDotColor: Color(0xFF707070),
                   ),
                 ),
-                // const SizedBox(height: 20,),
 
-                //Issue
+                const SizedBox(height: 10,),
+
+                //TAB BAR
+                DefaultTabController(length: 3,
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Container(
+                        // color: whiteColor,
+                        padding: const EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                          color: whiteColor,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Column(
+                          children: [
+                            TabBar(
+                              tabs: [
+                                Tab(
+                                  text: "IPAL",
+                                ),
+                                Tab(
+                                  text: "SPAM",
+                                ),
+                                Tab(
+                                  text: "DPPT",
+                                ),
+                              ],
+                              indicatorColor: primaryColor,
+                              labelColor: blackColor,
+                              indicator: MaterialIndicator(
+                                height: 5,
+                                topLeftRadius: 5,
+                                topRightRadius: 5,
+                                horizontalPadding: 30,
+                                tabPosition: TabPosition.bottom,
+                              ),
+                            ),
+                            SizedBox(height: 10.0,),
+
+                            Padding(padding: EdgeInsets.all(8.0)),
+                            
+                            TabBarView(children: [
+                              Icon(Icons.star),
+                              Icon(Icons.star),
+                              Icon(Icons.star),
+                            ]
+                            )
+
+                            
+                          ],
+                        ),
+                      ),
+                    ),
+
+                ),
+
                 SizedBox(
                   height: 300,
                   child: PageView(

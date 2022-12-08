@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:prototype1_lahan/authentification/auth_bloc.dart';
 import 'package:prototype1_lahan/dashboard/dashboard.dart';
 import 'package:prototype1_lahan/share/item.dart';
+import 'package:prototype1_lahan/share/routes.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -11,13 +14,24 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  var usernameController = TextEditingController();
+  var passwordController = TextEditingController();
+  String message1 = '';
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
       body: SafeArea(
         child: Center(
-          child: Column(
+          child: BlocConsumer<AuthBloc, AuthState>(
+            listener: (context, state) {
+              if(state.status.isSuccess){
+                Navigator.pushNamedAndRemoveUntil(context, CustomRoutes.dashboard, (route) => false);
+              }
+          },
+          builder: (context, state) {
+            return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               //Logo
@@ -51,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
                     border: Border.all(color: thirdColor),
                     borderRadius: BorderRadius.circular(12)
                   ),
-                  child: const Padding(
+                  child: Padding(
                     padding: EdgeInsets.only(left: 20),
                     child: TextField(
                       decoration:
@@ -59,6 +73,7 @@ class _LoginPageState extends State<LoginPage> {
                         border: InputBorder.none,
                         hintText: 'Username',
                       ),
+                      controller: usernameController,
                     ),
                   ),
                 ),
@@ -74,15 +89,16 @@ class _LoginPageState extends State<LoginPage> {
                         border: Border.all(color: thirdColor),
                         borderRadius: BorderRadius.circular(12)
                     ),
-                    child: const Padding(
+                    child:  Padding(
                         padding: EdgeInsets.only(left: 20),
                         child: TextField(
                           obscureText: true,
                           decoration:
                           InputDecoration(
                             border: InputBorder.none,
-                            hintText: 'Username',
+                            hintText: 'Password',
                           ),
+                          controller: passwordController,
                         ),
                     ),
                 ),
@@ -93,8 +109,11 @@ class _LoginPageState extends State<LoginPage> {
               Padding(padding:
                  const EdgeInsets.symmetric(horizontal: 25.0),
                 child: GestureDetector(
-                  onTap: () => {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context){ return const Dashboard();}))
+                  onTap: () {
+                    context.read<AuthBloc>().add(OnLoginEvent(
+                        username: usernameController.text,
+                        password: passwordController.text,
+                    ));
                   },
                   child: Container(
                     padding: const EdgeInsets.all(20),
@@ -126,7 +145,9 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ],
-          ),
+          );
+  },
+),
         )
       )
     );
