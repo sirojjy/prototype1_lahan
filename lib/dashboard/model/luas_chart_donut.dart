@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-class IssueCard extends StatefulWidget {
+class LuasChartDonut extends StatefulWidget {
 
-  const IssueCard({Key? key}) : super(key: key);
+  const LuasChartDonut({Key? key}) : super(key: key);
 
   @override
-  State<IssueCard> createState() => _IssueCardState();
+  State<LuasChartDonut> createState() => _LuasChartDonutState();
 }
 
-class _IssueCardState extends State<IssueCard> {
+class _LuasChartDonutState extends State<LuasChartDonut> {
 
 
 
   var _chartData;
   var _tooltipBehavior;
 
-  _IssueCardState();
+  _LuasChartDonutState();
 
   @override
   void initState() {

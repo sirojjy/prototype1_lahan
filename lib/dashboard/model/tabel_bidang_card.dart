@@ -15,11 +15,11 @@ class _TabelBidangCardState extends State<TabelBidangCard> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5.0),
       child: Container(
-        width: 500,
+        width: 550,
         // padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: whiteColor,
-          borderRadius: BorderRadius.circular(15),
+          // borderRadius: BorderRadius.circular(15),
         ),
         child: DataTable(
           columns: <DataColumn>[

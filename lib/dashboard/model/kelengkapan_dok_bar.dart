@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-class IssueBar extends StatefulWidget {
+class KelengkapanBidang extends StatefulWidget {
 
-  const IssueBar({Key? key}) : super(key: key);
+  const KelengkapanBidang({Key? key}) : super(key: key);
 
   @override
-  State<IssueBar> createState() => _IssueBarState();
+  State<KelengkapanBidang> createState() => _KelengkapanBidangState();
 }
 
-class _IssueBarState extends State<IssueBar> {
+class _KelengkapanBidangState extends State<KelengkapanBidang> {
 
 
 
   var _chartData;
   var _tooltipBehavior;
 
-  _IssueBarState();
+  _KelengkapanBidangState();
 
   @override
   void initState() {
@@ -30,25 +30,30 @@ class _IssueBarState extends State<IssueBar> {
     return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0),
         child: Container(
-          height: 200,
+          height: 300,
             child: SfCartesianChart(
               // Initialize category axis
                 primaryXAxis: CategoryAxis(),
-                series: <StackedBarSeries<SalesData, String>>[
-                  StackedBarSeries(
+                title: ChartTitle(text: 'Kelengkapan Dokumen'),
+                palette: <Color>[
+                  Color(0xFF59C1BD),
+                  Color(0xFFF49D1A),
+                ],
+                series: <StackedBar100Series<SalesData, String>>[
+                  StackedBar100Series(
                       dataSource: <SalesData>[
-                        SalesData('IPAL 1', 35, 20),
-                        SalesData('IPAL 2', 28, 20),
-                        SalesData('IPAL 3', 34, 20),
+                        SalesData('Penlok', 35, 20),
+                        SalesData('Daftar \n Nominatif', 28, 20),
+                        SalesData('Identitas', 34, 20),
                       ],
                       xValueMapper: (SalesData sales, _) => sales.year,
                       yValueMapper: (SalesData sales, _) => sales.sales
                   ),
-                  StackedBarSeries(
+                  StackedBar100Series(
                       dataSource: <SalesData>[
-                        SalesData('IPAL 1', 35, 20),
-                        SalesData('IPAL 2', 28, 20),
-                        SalesData('IPAL 3', 34, 20),
+                        SalesData('Penlok', 35, 20),
+                        SalesData('Daftar \n Nominatif', 28, 20),
+                        SalesData('Identitas', 34, 20),
                       ],
                       xValueMapper: (SalesData sales, _) => sales.year,
                       yValueMapper: (SalesData sales, _) => sales.sales2
@@ -66,50 +71,14 @@ class _IssueBarState extends State<IssueBar> {
     IssueData(jenis: 1, jumlahIssue: 35.0),
     IssueData(jenis: 2, jumlahIssue: 35.0),
   ];
-
-
-
-
-
-
-  // List<IssueData> getChartData() {
-  //   var  chartData = <IssueData>[];
-  //
-  //   var listData = [
-  //     {'IPAL': 2000.0, 'label': 'IPAL1'},
-  //     {'IPAL': 1500.0, 'label': 'IPAL2'},
-  //     {'IPAL': 700.0, 'label': 'IPAL3'}
-  //   ];
-  //   for(var i = 0; i<listData.length; i++){
-  //     chartData.add(IssueData(
-  //         jenis:listData[i]['label'].toString(),
-  //         jumlahIssue:double.parse(listData[i]['IPAL'].toString())
-  //     ));
-  //   }
-  //
-  //   return chartData;
-  // }
 }
+
 class SalesData {
   SalesData(this.year, this.sales, this.sales2);
   final String year;
   final double sales;
   final double sales2;
 }
-
-// class SalesData {
-//   final DateTime tanggal;
-//   final String label;
-//   final double value1;
-//   final double value2;
-//   final double value3;
-//   final double value4;
-//   final double value5;
-//
-//   SalesData(this.tanggal, this.label, this.value1, this.value2, this.value3, this.value4, this.value5);
-//
-// }
-
 
 class IssueData {
   final int? jenis;

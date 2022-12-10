@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tab_indicator_styler/flutter_tab_indicator_styler.dart';
-import 'package:prototype1_lahan/dashboard/model/issueCard.dart';
-import 'package:prototype1_lahan/dashboard/model/myCard.dart';
+import 'package:prototype1_lahan/dashboard/model/bidang_pie_chart.dart';
+import 'package:prototype1_lahan/dashboard/model/kelengkapan_dok_bar.dart';
+import 'package:prototype1_lahan/dashboard/model/luas_chart_donut.dart';
+import 'package:prototype1_lahan/dashboard/model/my_card.dart';
 import 'package:prototype1_lahan/inventarisasi/inventarisasi.dart';
 import 'package:prototype1_lahan/share/appbarNew.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -83,8 +85,6 @@ class Dashboard extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Container(
-                        // color: whiteColor,
-                        // padding: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
                           color: whiteColor,
                           borderRadius: BorderRadius.circular(15),
@@ -105,7 +105,6 @@ class Dashboard extends StatelessWidget {
                                   text: "DPPT",
                                 ),
                               ],
-
                               indicatorColor: primaryColor,
                               labelColor: blackColor,
                               indicator: MaterialIndicator(
@@ -118,7 +117,7 @@ class Dashboard extends StatelessWidget {
                             ),
                             SizedBox(height: 10.0,),
                             SizedBox(
-                              height: 800,
+                              height: 1500,
                               child: TabBarView(
                                 children: [
                                   Container(
@@ -127,7 +126,7 @@ class Dashboard extends StatelessWidget {
                                       physics: NeverScrollableScrollPhysics(),
                                       children: [
                                         SizedBox(
-                                            child:IssueCard()
+                                            child:LuasChartDonut()
                                         ),
 
                                         SizedBox(height: 10,),
@@ -147,7 +146,7 @@ class Dashboard extends StatelessWidget {
                                                 borderRadius: BorderRadius.circular(10)
                                             ),
                                             child: Text(
-                                              'Terdapat 9 Issue pada kategori IPAL',
+                                              'Terdapat 16 Issue open pada kategori IPAL',
                                               style: TextStyle(color: whiteColor),
                                             ),
                                           ),
@@ -156,6 +155,31 @@ class Dashboard extends StatelessWidget {
                                         SizedBox(height: 10,),
 
                                         IssueBar(),
+
+                                        SizedBox(height: 10,),
+
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Container(
+                                            padding: EdgeInsets.all(10),
+                                            decoration: BoxDecoration(
+                                                color: Colors.blueAccent,
+                                                borderRadius: BorderRadius.circular(10)
+                                            ),
+                                            child: Text(
+                                              'Total Bidang Area IPAL (IPAL 1+TPST, IPAL 2, dan IPAL 3) : 31 Bidang',
+                                              style: TextStyle(color: whiteColor),
+                                            ),
+                                          ),
+                                        ),
+
+                                        SizedBox(height: 10,),
+
+                                        BidangPeChart(),
+
+                                        SizedBox(height: 10,),
+
+                                        KelengkapanBidang(),
 
                                       ],
                                     ),
@@ -167,12 +191,6 @@ class Dashboard extends StatelessWidget {
                                 ],
                               ),
                             )
-
-
-                            // Container(
-                            //   // height: 700,
-                            //   child: ,
-                            // ),
                           ],
                         ),
                       ),

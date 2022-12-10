@@ -61,13 +61,13 @@ class MyCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(jumlahLuas.toStringAsFixed(0),
+                Text(jumlahLuas.toStringAsFixed(0)+' m2',
                   style: const TextStyle(
                     color: whiteColor,
                     fontSize: 15,
                   ),
                 ),
-                Text(jumlahNilai.toStringAsFixed(0),
+                Text('Rp '+jumlahNilai.toStringAsFixed(0),
                   style: const TextStyle(
                     color: whiteColor,
                     fontSize: 15,
