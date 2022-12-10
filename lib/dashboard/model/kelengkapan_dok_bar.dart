@@ -35,6 +35,7 @@ class _KelengkapanBidangState extends State<KelengkapanBidang> {
               // Initialize category axis
                 primaryXAxis: CategoryAxis(),
                 title: ChartTitle(text: 'Kelengkapan Dokumen'),
+                legend: Legend(overflowMode: LegendItemOverflowMode.wrap),
                 palette: <Color>[
                   Color(0xFF59C1BD),
                   Color(0xFFF49D1A),

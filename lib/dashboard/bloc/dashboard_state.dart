@@ -1,86 +1,78 @@
 part of 'dashboard_bloc.dart';
 
-enum DashboardStateStatus { initial, success, error, loading }
+enum DashboardStateStatus {initial, success, error, loading}
 
-extension DashboardStateStatusX on DashboardStateStatus {
+extension DashboardInitial on DashboardStateStatus {
   bool get isInitial => this == DashboardStateStatus.initial;
-  bool get isSuccess => this == DashboardStateStatus.success;
-  bool get isError => this == DashboardStateStatus.error;
-  bool get isLoading => this == DashboardStateStatus.loading;
+  bool get success => this == DashboardStateStatus.success;
+  bool get error => this == DashboardStateStatus.error;
+  bool get loading => this == DashboardStateStatus.loading;
 }
 
-class DashboardState extends Equatable {
+ class DashboardState extends Equatable {
 
   const DashboardState({
-    this.namaPemilik,
-    this.nib,
-    this.nik,
-    this.alamat,
-    this.noAlasHak,
-    this.jenisHak,
-    this.trase,
-    this.file,
     this.status = DashboardStateStatus.initial,
-  });
+    this.ipal,
+    this.spam,
+    this.dppt,
+    this.luas_ipal,
+    this.luas_spam,
+    this.luas_dppt,
+    this.nilai_ipal,
+    this.nilai_spam,
+    this.nilai_dppt,
+    this.message,
+});
 
-  final String? namaPemilik;
-  final String? nib;
-  final String? nik;
-  final String? alamat;
-  final String? noAlasHak;
-  final String? jenisHak;
-  final String? trase;
-  final String? file;
-  final DashboardStateStatus status;
-
-
+  final DashboardStateStatus? status;
+  final String? ipal;
+  final String? spam;
+  final String? dppt;
+  final String? luas_ipal;
+  final String? luas_spam;
+  final String? luas_dppt;
+  final String? nilai_ipal;
+  final String? nilai_spam;
+  final String? nilai_dppt;
+  final String? message;
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
-    namaPemilik,
-    nib,
-    nik,
-    alamat,
-    noAlasHak,
-    jenisHak,
-    trase,
-    file,
-    status,
+    status, ipal, spam, dppt, luas_ipal, luas_spam, luas_dppt, nilai_ipal, nilai_spam, nilai_dppt, message,
   ];
 
-  DashboardState copyWith ({
-     String? namaPemilik,
-     String? nib,
-     String? nik,
-     String? alamat,
-     String? noAlasHak,
-     String? jenisHak,
-     String? trase,
-     String? file,
+  DashboardState copyWith({
     DashboardStateStatus? status,
-  }) {
+    String? ipal,
+    String? spam,
+    String? dppt,
+    String? luas_ipal,
+    String? luas_spam,
+    String? luas_dppt,
+    String? nilai_ipal,
+    String? nilai_spam,
+    String? nilai_dppt,
+    String? message,
+}) {
+    // TODO: implement copyWith
     return DashboardState(
-      namaPemilik: namaPemilik?? this.namaPemilik,
-      nib: nib?? this.nib,
-      nik: nik?? this.nik,
-      alamat: alamat?? this.alamat,
-      noAlasHak: noAlasHak?? this.noAlasHak,
-      jenisHak: jenisHak?? this.jenisHak,
-      trase: trase?? this.trase,
-      file: file?? this.file,
-      status: status?? this.status,
-
+      status: status ?? this.status,
+      spam: spam ?? this.spam,
+      dppt: dppt ?? this.dppt,
+      luas_ipal: luas_ipal ?? this.luas_ipal,
+      luas_spam: luas_spam ?? this.luas_spam,
+      luas_dppt: luas_dppt ?? this.luas_dppt,
+      nilai_ipal: nilai_ipal ?? this.nilai_ipal,
+      nilai_spam: nilai_spam ?? this.nilai_spam,
+      nilai_dppt: nilai_dppt ?? this.nilai_dppt,
+      message: message ?? this.message,
     );
   }
-}
 
-// namaPemilik: namaPemilik?? this.namaPemilik,
-//   nib: nib?? this.nib,
-//   nik: nik?? this.nik,
-//   alamat: alamat?? this.alamat,
-//   noAlasHak: noAlasHak?? this.noAlasHak,
-//   jenisHak: jenisHak?? this.jenisHak,
-//   trase: trase?? this.trase,
-//   file: file?? this.file,
+
+
+
+
+}
 
