@@ -39,10 +39,10 @@ class MyApp extends StatelessWidget {
       home: const LoginPage(),
 
       routes: {
-        CustomRoutes.loginPage : (context) => const LoginPage(),
-        CustomRoutes.dashboard : (context) => const Dashboard(),
-        CustomRoutes.inventarisasi : (context) => const Inventarisasi(),
-        CustomRoutes.imagePicker : (context) => const ImagePicker(),
+        CustomRoutes.loginPage : (context) =>  LoginPage(),
+        CustomRoutes.dashboard : (context) =>  Dashboard(),
+        CustomRoutes.inventarisasi : (context) =>  Inventarisasi(),
+        CustomRoutes.imagePicker : (context) =>  ImagePicker(),
       },
     );
   }

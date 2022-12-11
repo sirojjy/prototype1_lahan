@@ -6,6 +6,7 @@ import 'package:prototype1_lahan/dashboard/model/luas_chart_donut.dart';
 import 'package:prototype1_lahan/dashboard/model/my_card.dart';
 import 'package:prototype1_lahan/inventarisasi/inventarisasi.dart';
 import 'package:prototype1_lahan/share/appbarNew.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../share/item.dart';
@@ -13,8 +14,14 @@ import 'model/issue_bar.dart';
 import 'model/tabel_bidang_card.dart';
 import 'model/tabel_issue_card.dart';
 
-class Dashboard extends StatelessWidget {
+class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
+
+  @override
+  State<Dashboard> createState() => _DashboardState();
+}
+
+class _DashboardState extends State<Dashboard> {
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +29,37 @@ class Dashboard extends StatelessWidget {
     final _controller = PageController();
     late TabController _tabController;
     final _tabs = [
-      Tab(text: 'IPAL',),
-      Tab(text: 'SPAM',),
-      Tab(text: 'DPPT Terpadu',),
+      const Tab(text: 'IPAL',),
+      const Tab(text: 'SPAM',),
+      const Tab(text: 'DPPT Terpadu',),
     ];
+
+    SharedPreferences? pref;
+    var ipal;
+    var spam;
+    var dppt;
+    var luas_ipal;
+    var luas_spam;
+    var luas_dppt;
+    var nilai_ipal;
+    var nilai_spam;
+    var nilai_dppt;
+    var message;
+    print(ipal);
+
+    @override
+    void initState(){
+
+      super.initState();
+    }
+
+    void getPref() async{
+      pref = await SharedPreferences.getInstance();
+
+      setState(() {
+        ipal = pref!.getString('ipal') as double;
+      });
+    }
 
     return Scaffold(
         backgroundColor: backgroundColor,
@@ -35,20 +69,20 @@ class Dashboard extends StatelessWidget {
               children: [
                 //appbar
                 const AppbarNew(title: 'Dashboard'),
-                SizedBox(height: 20,),
+                const SizedBox(height: 20,),
 
                 //card
                 SizedBox(
                   height: 150,
                   child: PageView(
                     scrollDirection: Axis.horizontal,
-                    physics: PageScrollPhysics(),
+                    physics: const PageScrollPhysics(),
                     controller: _controller,
                     // pageSnapping: false,
-                    children: const [
+                    children:  [
                       MyCard(
                           titleCard: 'IPAL',
-                          jumlahBidang: 390,
+                          jumlahBidang: ipal,
                           jumlahLuas: 100000,
                           jumlahNilai: 300000000000,
                           color: Color(0xFF10A19D)),
@@ -91,10 +125,10 @@ class Dashboard extends StatelessWidget {
                         ),
                         child: ListView(
                           shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           children: [
                             TabBar(
-                              tabs: [
+                              tabs: const [
                                 Tab(
                                   text: "IPAL",
                                 ),
@@ -115,7 +149,7 @@ class Dashboard extends StatelessWidget {
                                 tabPosition: TabPosition.bottom,
                               ),
                             ),
-                            SizedBox(height: 10.0,),
+                            const SizedBox(height: 10.0,),
                             SizedBox(
                               height: 1500,
                               child: TabBarView(
@@ -123,71 +157,71 @@ class Dashboard extends StatelessWidget {
                                   Container(
                                     child: ListView(
                                       shrinkWrap: true,
-                                      physics: NeverScrollableScrollPhysics(),
+                                      physics: const NeverScrollableScrollPhysics(),
                                       children: [
-                                        SizedBox(
-                                            child:LuasChartDonut()
+                                        const SizedBox(
+                                            child:const LuasChartDonut()
                                         ),
 
-                                        SizedBox(height: 10,),
+                                        const SizedBox(height: 10,),
 
-                                        SizedBox(
-                                            child: TabelBidangCard()
+                                        const SizedBox(
+                                            child: const TabelBidangCard()
                                         ),
 
-                                        SizedBox(height: 10,),
+                                        const SizedBox(height: 10,),
 
                                         Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: Container(
-                                            padding: EdgeInsets.all(10),
+                                            padding: const EdgeInsets.all(10),
                                             decoration: BoxDecoration(
                                                 color: Colors.redAccent[100],
                                                 borderRadius: BorderRadius.circular(10)
                                             ),
-                                            child: Text(
+                                            child: const Text(
                                               'Terdapat 16 Issue open pada kategori IPAL',
                                               style: TextStyle(color: whiteColor),
                                             ),
                                           ),
                                         ),
 
-                                        SizedBox(height: 10,),
+                                        const SizedBox(height: 10,),
 
-                                        IssueBar(),
+                                        const IssueBar(),
 
-                                        SizedBox(height: 10,),
+                                        const SizedBox(height: 10,),
 
                                         Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: Container(
-                                            padding: EdgeInsets.all(10),
+                                            padding: const EdgeInsets.all(10),
                                             decoration: BoxDecoration(
                                                 color: Colors.blueAccent,
                                                 borderRadius: BorderRadius.circular(10)
                                             ),
-                                            child: Text(
+                                            child: const Text(
                                               'Total Bidang Area IPAL (IPAL 1+TPST, IPAL 2, dan IPAL 3) : 31 Bidang',
-                                              style: TextStyle(color: whiteColor),
+                                              style: const TextStyle(color: whiteColor),
                                             ),
                                           ),
                                         ),
 
-                                        SizedBox(height: 10,),
+                                        const SizedBox(height: 10,),
 
-                                        BidangPeChart(),
+                                        const BidangPeChart(),
 
-                                        SizedBox(height: 10,),
+                                        const SizedBox(height: 10,),
 
-                                        KelengkapanBidang(),
+                                        const KelengkapanBidang(),
 
                                       ],
                                     ),
                                   ),
 
-                                  Icon(Icons.star),
+                                  const Icon(Icons.star),
 
-                                  Icon(Icons.star),
+                                  const Icon(Icons.star),
                                 ],
                               ),
                             )
@@ -198,7 +232,7 @@ class Dashboard extends StatelessWidget {
                 ),
                 //END TABBAR
 
-                SizedBox(height: 20,),
+                const SizedBox(height: 20,),
 
                 //Tabel Issue
 
@@ -206,13 +240,13 @@ class Dashboard extends StatelessWidget {
                   onTap: () => {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => const Inventarisasi()))
                   },
-                  child: SizedBox(
+                  child: const SizedBox(
                     // height: 400,
                     child: TabelIssueCard(),
                   ),
                 ),
 
-                SizedBox(height: 20,)
+                const SizedBox(height: 20,)
 
               ],
             ),

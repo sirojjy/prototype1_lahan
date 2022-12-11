@@ -3,7 +3,7 @@ import 'package:prototype1_lahan/share/item.dart';
 
 class MyCard extends StatelessWidget {
   final String titleCard;
-  final double jumlahBidang;
+  final double? jumlahBidang;
   final double jumlahLuas;
   final double jumlahNilai;
   final color;
@@ -14,7 +14,7 @@ class MyCard extends StatelessWidget {
     required this.jumlahBidang,
     required this.jumlahLuas,
     required this.jumlahNilai,
-    required this.color
+    this.color
   }) : super(key: key);
 
   @override
@@ -42,7 +42,7 @@ class MyCard extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text(jumlahBidang.toStringAsFixed(0),
+                Text(jumlahBidang.toString(),
                   style: const TextStyle(
                     color: whiteColor,
                     fontWeight: FontWeight.bold,
