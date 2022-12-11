@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:prototype1_lahan/authentification/login.dart';
+import 'package:prototype1_lahan/dashboard/bloc/dashboard_bloc.dart';
 import 'package:prototype1_lahan/inventarisasi/inventarisasi.dart';
 import 'package:prototype1_lahan/inventarisasi/test_image_picker.dart';
 import 'authentification/auth_bloc.dart';
@@ -16,7 +17,10 @@ void main() {
   runApp(
       MultiBlocProvider(
         providers: [
-          BlocProvider(create: (BuildContext context) =>AuthBloc())
+
+          // Mendaftarkan semua BLOC
+          BlocProvider(create: (BuildContext context) =>AuthBloc()),
+          BlocProvider(create: (BuildContext context) =>DashboardBloc())
         ],
         child: const MyApp(),
       )

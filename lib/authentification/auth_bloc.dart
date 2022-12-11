@@ -60,9 +60,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           status: AuthStateStatus.success,
           )
         );
-        await prefs.setString('id', response['id']);
-        await prefs.setString('username', response['username']);
-        await prefs.setString('nama', response['nama']);
+        print('data3 ${response['data']['username']}');
+        await prefs.setString('id', response['data']['id_user']);
+        await prefs.setString('username', response['data']['username']);
+        await prefs.setString('nama', response['data']['nama']);
+        await prefs.setString('id_ruas', response['data']['id_ruas']);
+
       }
     }
 

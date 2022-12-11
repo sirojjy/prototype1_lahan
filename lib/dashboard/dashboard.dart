@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tab_indicator_styler/flutter_tab_indicator_styler.dart';
+import 'package:prototype1_lahan/dashboard/bloc/dashboard_bloc.dart';
 import 'package:prototype1_lahan/dashboard/model/bidang_pie_chart.dart';
 import 'package:prototype1_lahan/dashboard/model/kelengkapan_dok_bar.dart';
 import 'package:prototype1_lahan/dashboard/model/luas_chart_donut.dart';
@@ -8,6 +9,7 @@ import 'package:prototype1_lahan/inventarisasi/inventarisasi.dart';
 import 'package:prototype1_lahan/share/appbarNew.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../share/item.dart';
 import 'model/issue_bar.dart';
@@ -22,46 +24,48 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  final _controller = PageController();
+  late TabController _tabController;
+  final _tabs = [
+    const Tab(text: 'IPAL',),
+    const Tab(text: 'SPAM',),
+    const Tab(text: 'DPPT Terpadu',),
+  ];
+
+  SharedPreferences? pref;
+  var id_klien;
+  var ipal;
+  var spam;
+  var dppt;
+  var luas_ipal;
+  var luas_spam;
+  var luas_dppt;
+  var nilai_ipal;
+  var nilai_spam;
+  var nilai_dppt;
+  var message;
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    getPref();
+    super.initState();
+  }
+  void getPref() async{
+    pref = await SharedPreferences.getInstance();
+
+    setState(() {
+      // ipal =  as double;
+    });
+
+  }
 
   @override
   Widget build(BuildContext context) {
     // Page Controller
-    final _controller = PageController();
-    late TabController _tabController;
-    final _tabs = [
-      const Tab(text: 'IPAL',),
-      const Tab(text: 'SPAM',),
-      const Tab(text: 'DPPT Terpadu',),
-    ];
-
-    SharedPreferences? pref;
-    var ipal;
-    var spam;
-    var dppt;
-    var luas_ipal;
-    var luas_spam;
-    var luas_dppt;
-    var nilai_ipal;
-    var nilai_spam;
-    var nilai_dppt;
-    var message;
-    print(ipal);
-
-    @override
-    void initState(){
-
-      super.initState();
-    }
-
-    void getPref() async{
-      pref = await SharedPreferences.getInstance();
-
-      setState(() {
-        ipal = pref!.getString('ipal') as double;
-      });
-    }
-
     return Scaffold(
+
         backgroundColor: backgroundColor,
         body: SafeArea(
           child: SingleChildScrollView(
@@ -72,35 +76,42 @@ class _DashboardState extends State<Dashboard> {
                 const SizedBox(height: 20,),
 
                 //card
-                SizedBox(
-                  height: 150,
-                  child: PageView(
-                    scrollDirection: Axis.horizontal,
-                    physics: const PageScrollPhysics(),
-                    controller: _controller,
-                    // pageSnapping: false,
-                    children:  [
-                      MyCard(
-                          titleCard: 'IPAL',
-                          jumlahBidang: ipal,
-                          jumlahLuas: 100000,
-                          jumlahNilai: 300000000000,
-                          color: Color(0xFF10A19D)),
-                      MyCard(
-                          titleCard: 'SPAM',
-                          jumlahBidang: 390,
-                          jumlahLuas: 100000,
-                          jumlahNilai: 300000000000,
-                          color: Color(0xFFFF7000)),
-                      MyCard(
-                          titleCard: 'DPPT Terpadu',
-                          jumlahBidang: 390,
-                          jumlahLuas: 100000,
-                          jumlahNilai: 300000000000,
-                          color: Color(0xFFFFBF00))
-                    ],
-                  ),
-                ),
+                BlocBuilder<DashboardBloc, DashboardState>(
+                  bloc: BlocProvider.of<DashboardBloc>(context)..add(OnJumlahIpalEvent()),
+                  builder: (context, state) {
+                    return SizedBox(
+                    height: 150,
+                    child: PageView(
+                      scrollDirection: Axis.horizontal,
+                      physics: const PageScrollPhysics(),
+                      controller: _controller,
+                      // pageSnapping: false,
+                      children:  [
+                        MyCard(
+                            titleCard: 'IPAL',
+                            jumlahBidang: state.ipal ?? '',
+                            // double.parse(state.ipal!)
+
+                            jumlahLuas: state.luas_ipal ?? '',
+                            jumlahNilai: state.nilai_ipal ?? '0',
+                            color: Color(0xFF10A19D)),
+                        MyCard(
+                            titleCard: 'SPAM',
+                            jumlahBidang: state.spam ?? '',
+                            jumlahLuas: state.luas_spam ?? '',
+                            jumlahNilai: state.nilai_spam ?? '0',
+                            color: Color(0xFFFF7000)),
+                        MyCard(
+                            titleCard: 'DPPT Terpadu',
+                            jumlahBidang: state.dppt ?? '',
+                            jumlahLuas: state.luas_dppt ?? '',
+                            jumlahNilai: state.nilai_dppt ?? '0',
+                            color: Color(0xFFFFBF00))
+                      ],
+                    ),
+                  );
+  },
+),
 
                 const SizedBox(height: 10,),
 

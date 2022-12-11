@@ -3,9 +3,9 @@ import 'package:prototype1_lahan/share/item.dart';
 
 class MyCard extends StatelessWidget {
   final String titleCard;
-  final double? jumlahBidang;
-  final double jumlahLuas;
-  final double jumlahNilai;
+  final String jumlahBidang;
+  final String jumlahLuas;
+  final String jumlahNilai;
   final color;
   // final String s= num.toString().replaceAll((regex), '');
 
@@ -61,13 +61,13 @@ class MyCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(jumlahLuas.toStringAsFixed(0)+' m2',
+                Text('$jumlahLuas m2',
                   style: const TextStyle(
                     color: whiteColor,
                     fontSize: 15,
                   ),
                 ),
-                Text('Rp '+jumlahNilai.toStringAsFixed(0),
+                Text('Rp $jumlahNilai',
                   style: const TextStyle(
                     color: whiteColor,
                     fontSize: 15,

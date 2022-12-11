@@ -58,6 +58,7 @@ extension DashboardInitial on DashboardStateStatus {
     // TODO: implement copyWith
     return DashboardState(
       status: status ?? this.status,
+      ipal: ipal ?? this.ipal,
       spam: spam ?? this.spam,
       dppt: dppt ?? this.dppt,
       luas_ipal: luas_ipal ?? this.luas_ipal,
