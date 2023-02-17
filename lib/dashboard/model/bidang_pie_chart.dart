@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-class BidangPeChart extends StatefulWidget {
+class BidangPieChart extends StatefulWidget {
 
-  const BidangPeChart({Key? key}) : super(key: key);
+  const BidangPieChart({Key? key}) : super(key: key);
 
   @override
-  State<BidangPeChart> createState() => _BidangPeChartState();
+  State<BidangPieChart> createState() => _BidangPieChartState();
 }
 
-class _BidangPeChartState extends State<BidangPeChart> {
+class _BidangPieChartState extends State<BidangPieChart> {
 
 
 
   var _chartData;
   var _tooltipBehavior;
 
-  _BidangPeChartState();
+  _BidangPieChartState();
 
   @override
   void initState() {

@@ -1,18 +1,19 @@
-part of 'dashboard_bloc.dart';
+part of 'top_card_bloc.dart';
 
-enum DashboardStateStatus {initial, success, error, loading}
 
-extension DashboardInitial on DashboardStateStatus {
-  bool get isInitial => this == DashboardStateStatus.initial;
-  bool get success => this == DashboardStateStatus.success;
-  bool get error => this == DashboardStateStatus.error;
-  bool get loading => this == DashboardStateStatus.loading;
+enum TopCardStateStatus {initial, success, error, loading}
+
+extension TopCardInitial on TopCardStateStatus {
+  bool get isInitial => this == TopCardStateStatus.initial;
+  bool get success => this == TopCardStateStatus.success;
+  bool get error => this == TopCardStateStatus.error;
+  bool get loading => this == TopCardStateStatus.loading;
 }
 
- class DashboardState extends Equatable {
+class TopCardState extends Equatable {
 
-  const DashboardState({
-    this.status = DashboardStateStatus.initial,
+  const TopCardState({
+    this.status = TopCardStateStatus.initial,
     this.ipal,
     this.spam,
     this.dppt,
@@ -23,9 +24,9 @@ extension DashboardInitial on DashboardStateStatus {
     this.nilai_spam,
     this.nilai_dppt,
     this.message,
-});
+  });
 
-  final DashboardStateStatus? status;
+  final TopCardStateStatus? status;
   final String? ipal;
   final String? spam;
   final String? dppt;
@@ -42,8 +43,8 @@ extension DashboardInitial on DashboardStateStatus {
     status, ipal, spam, dppt, luas_ipal, luas_spam, luas_dppt, nilai_ipal, nilai_spam, nilai_dppt, message,
   ];
 
-  DashboardState copyWith({
-    DashboardStateStatus? status,
+  TopCardState copyWith({
+    TopCardStateStatus? status,
     String? ipal,
     String? spam,
     String? dppt,
@@ -54,9 +55,9 @@ extension DashboardInitial on DashboardStateStatus {
     String? nilai_spam,
     String? nilai_dppt,
     String? message,
-}) {
+  }) {
     // TODO: implement copyWith
-    return DashboardState(
+    return TopCardState(
       status: status ?? this.status,
       ipal: ipal ?? this.ipal,
       spam: spam ?? this.spam,
@@ -71,4 +72,3 @@ extension DashboardInitial on DashboardStateStatus {
     );
   }
 }
-

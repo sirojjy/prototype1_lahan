@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:prototype1_lahan/authentification/login.dart';
+import 'package:prototype1_lahan/authentification/screen/login.dart';
 import 'package:prototype1_lahan/dashboard/bloc/dashboard_bloc.dart';
+import 'package:prototype1_lahan/dashboard/part_dashboard/top_card/top_card_bloc.dart';
 import 'package:prototype1_lahan/inventarisasi/inventarisasi.dart';
 import 'package:prototype1_lahan/inventarisasi/test_image_picker.dart';
-import 'authentification/auth_bloc.dart';
+import 'authentification/bloc/auth_bloc.dart';
 import 'dashboard/dashboard.dart';
 import 'share/routes.dart';
 
@@ -20,7 +21,8 @@ void main() {
 
           // Mendaftarkan semua BLOC
           BlocProvider(create: (BuildContext context) =>AuthBloc()),
-          BlocProvider(create: (BuildContext context) =>DashboardBloc())
+          BlocProvider(create: (BuildContext context) =>DashboardBloc()),
+          BlocProvider(create: (BuildContext context) =>TopCardBloc()),
         ],
         child: const MyApp(),
       )

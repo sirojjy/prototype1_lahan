@@ -11,17 +11,11 @@ class IssueBar extends StatefulWidget {
 
 class _IssueBarState extends State<IssueBar> {
 
-
-
-  var _chartData;
-  var _tooltipBehavior;
-
   _IssueBarState();
 
   @override
   void initState() {
     // _chartData = getChartData();
-    _tooltipBehavior = TooltipBehavior(enable: true);
     super.initState();
   }
 
@@ -66,29 +60,6 @@ class _IssueBarState extends State<IssueBar> {
     IssueData(jenis: 1, jumlahIssue: 35.0),
     IssueData(jenis: 2, jumlahIssue: 35.0),
   ];
-
-
-
-
-
-
-  // List<IssueData> getChartData() {
-  //   var  chartData = <IssueData>[];
-  //
-  //   var listData = [
-  //     {'IPAL': 2000.0, 'label': 'IPAL1'},
-  //     {'IPAL': 1500.0, 'label': 'IPAL2'},
-  //     {'IPAL': 700.0, 'label': 'IPAL3'}
-  //   ];
-  //   for(var i = 0; i<listData.length; i++){
-  //     chartData.add(IssueData(
-  //         jenis:listData[i]['label'].toString(),
-  //         jumlahIssue:double.parse(listData[i]['IPAL'].toString())
-  //     ));
-  //   }
-  //
-  //   return chartData;
-  // }
 }
 class SalesData {
   SalesData(this.year, this.sales, this.sales2);
@@ -96,20 +67,6 @@ class SalesData {
   final double sales;
   final double sales2;
 }
-
-// class SalesData {
-//   final DateTime tanggal;
-//   final String label;
-//   final double value1;
-//   final double value2;
-//   final double value3;
-//   final double value4;
-//   final double value5;
-//
-//   SalesData(this.tanggal, this.label, this.value1, this.value2, this.value3, this.value4, this.value5);
-//
-// }
-
 
 class IssueData {
   final int? jenis;

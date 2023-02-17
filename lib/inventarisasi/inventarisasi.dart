@@ -124,8 +124,8 @@ class _InventarisasiState extends State<Inventarisasi> {
           return Container(
             height: 400,
               padding: const EdgeInsets.only(top: 20),
-            child: Card(
-              child: ListTile(
+            child: const Card(
+              child: const ListTile(
                 title: Text('Detail Issue'),
               ),
             ),
@@ -244,9 +244,9 @@ class _InventarisasiState extends State<Inventarisasi> {
                   // const SizedBox(
                   //   height: 10,
                   // ),
-                  const AppbarNew(title: 'Inventarisasi'),
+                  AppbarNew(title: 'Inventarisasi'),
 
-                  SizedBox(height: 20,),
+                  const SizedBox(height: 20,),
 
                   Expanded(
                     child: StreamBuilder(
@@ -290,20 +290,20 @@ class _InventarisasiState extends State<Inventarisasi> {
                                                   color: warningColor,
                                                   borderRadius: BorderRadius.circular(5)
                                               ),
-                                              padding: EdgeInsets.all(5),
-                                              child: Text('1 Issue', style: TextStyle(color: whiteColor),),
+                                              padding: const EdgeInsets.all(5),
+                                              child: const Text('1 Issue', style: const TextStyle(color: whiteColor),),
                                             ),
                                           ),
-                                          SizedBox(width: 20,),
+                                          const SizedBox(width: 20,),
                                           GestureDetector(
                                             onTap: () => _create(),
                                             child: Container(
                                               decoration: BoxDecoration(
-                                                  color: primaryColor,
+                                                  color: const Color(0xFF2697FF),
                                                   borderRadius: BorderRadius.circular(5)
                                               ),
-                                              padding: EdgeInsets.all(5),
-                                              child: Text('+ Issue', style: TextStyle(color: whiteColor),),
+                                              padding: const EdgeInsets.all(5),
+                                              child: const Text('+ Issue', style: const TextStyle(color: whiteColor),),
                                             ),
                                           ),
                                           // IconButton(

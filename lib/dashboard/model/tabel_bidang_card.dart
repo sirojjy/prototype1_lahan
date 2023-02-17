@@ -32,14 +32,14 @@ class _TabelBidangCardState extends State<TabelBidangCard> {
             ),
             DataColumn(
                 label: Expanded(
-                  child: Text('Jumlah Bidang',
+                  child: Text('Jumlah \nBidang',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 )
             ),
             DataColumn(
                 label: Expanded(
-                  child: Text('Luas Bidang',
+                  child: Text('Luas \nBidang',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 )
