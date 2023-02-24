@@ -7,7 +7,7 @@ import 'package:prototype1_lahan/dashboard/model/kelengkapan_dok_bar.dart';
 import 'package:prototype1_lahan/dashboard/model/luas_chart_donut.dart';
 import 'package:prototype1_lahan/dashboard/model/my_card.dart';
 import 'package:prototype1_lahan/dashboard/part_dashboard/kategori_card/kategori_card.dart';
-import 'package:prototype1_lahan/dashboard/part_dashboard/top_card.dart';
+import 'package:prototype1_lahan/dashboard/part_dashboard/top_card/top_card.dart';
 import 'package:prototype1_lahan/inventarisasi/inventarisasi.dart';
 import 'package:prototype1_lahan/share/appbarNew.dart';
 import 'package:shared_preferences/shared_preferences.dart';

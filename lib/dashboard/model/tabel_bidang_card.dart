@@ -22,7 +22,7 @@ class _TabelBidangCardState extends State<TabelBidangCard> {
           // borderRadius: BorderRadius.circular(15),
         ),
         child: DataTable(
-          columns: <DataColumn>[
+          columns: const <DataColumn>[
             DataColumn(
                 label: Expanded(
                   child: Text('Area',
@@ -45,7 +45,7 @@ class _TabelBidangCardState extends State<TabelBidangCard> {
                 )
             )
           ],
-          rows: [
+          rows: const [
             DataRow(cells: <DataCell>[
               DataCell(Text('IPAL1')),
               DataCell(Text('12')),

@@ -11,6 +11,17 @@ extension TopCardInitial on TopCardStateStatus {
 }
 
 class TopCardState extends Equatable {
+  final TopCardStateStatus? status;
+  final String? ipal;
+  final String? spam;
+  final String? dppt;
+  final String? luas_ipal;
+  final String? luas_spam;
+  final String? luas_dppt;
+  final String? nilai_ipal;
+  final String? nilai_spam;
+  final String? nilai_dppt;
+  final String? message;
 
   const TopCardState({
     this.status = TopCardStateStatus.initial,
@@ -25,18 +36,6 @@ class TopCardState extends Equatable {
     this.nilai_dppt,
     this.message,
   });
-
-  final TopCardStateStatus? status;
-  final String? ipal;
-  final String? spam;
-  final String? dppt;
-  final String? luas_ipal;
-  final String? luas_spam;
-  final String? luas_dppt;
-  final String? nilai_ipal;
-  final String? nilai_spam;
-  final String? nilai_dppt;
-  final String? message;
 
   @override
   List<Object?> get props => [

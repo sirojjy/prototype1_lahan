@@ -43,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       //Logo
                       Text(
-                          'E - Lahan IKN',
+                          'E - Lahan',
                           style: GoogleFonts.bebasNeue(
                             textStyle: const TextStyle(
                                 fontSize: 40

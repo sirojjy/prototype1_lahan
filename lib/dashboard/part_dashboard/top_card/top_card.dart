@@ -4,7 +4,7 @@ import 'package:prototype1_lahan/dashboard/part_dashboard/top_card/top_card_bloc
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../model/my_card.dart';
+import '../../model/my_card.dart';
 
 class TopCard extends StatefulWidget {
   const TopCard({Key? key}) : super(key: key);
@@ -23,18 +23,6 @@ class _TopCardState extends State<TopCard> {
   ];
 
   SharedPreferences? pref;
-  var id_klien;
-  var ipal;
-  var spam;
-  var dppt;
-  var luas_ipal;
-  var luas_spam;
-  var luas_dppt;
-  var nilai_ipal;
-  var nilai_spam;
-  var nilai_dppt;
-  var message;
-
 
   @override
   void initState() {
@@ -73,19 +61,19 @@ class _TopCardState extends State<TopCard> {
                       jumlahLuas: state.luas_ipal ?? '',
                       jumlahNilai: state.nilai_ipal ?? '0',
                       // jumlahNilai: NumberFormat.currency(locale: 'id', symbol: 'Rp ', decimalDigits: 0).format(state.nilai_ipal ?? '0'),
-                      color: Color(0xFF10A19D)),
+                      color: const Color(0x0ff2da69b)),
                   MyCard(
                       titleCard: 'SPAM',
                       jumlahBidang: state.spam ?? '',
                       jumlahLuas: state.luas_spam ?? '',
                       jumlahNilai: state.nilai_spam ?? '0',
-                      color: Color(0xFFFF7000)),
+                      color: const Color(0x0ff34C5D8)),
                   MyCard(
                       titleCard: 'DPPT Terpadu',
                       jumlahBidang: state.dppt ?? '',
                       jumlahLuas: state.luas_dppt ?? '',
                       jumlahNilai: state.nilai_dppt ?? '0',
-                      color: Color(0xFFFFBF00))
+                      color: const Color(0x0ffB3B300))
                 ],
               ),
             );

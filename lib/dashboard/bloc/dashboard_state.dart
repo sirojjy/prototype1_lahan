@@ -1,6 +1,6 @@
 part of 'dashboard_bloc.dart';
 
-enum DashboardStateStatus {initial, success, error, loading}
+enum DashboardStateStatus { initial, success, error, loading }
 
 extension DashboardInitial on DashboardStateStatus {
   bool get isInitial => this == DashboardStateStatus.initial;
@@ -9,21 +9,19 @@ extension DashboardInitial on DashboardStateStatus {
   bool get loading => this == DashboardStateStatus.loading;
 }
 
- class DashboardState extends Equatable {
-
-  const DashboardState({
-    this.status = DashboardStateStatus.initial,
-    this.ipal,
-    this.spam,
-    this.dppt,
-    this.luas_ipal,
-    this.luas_spam,
-    this.luas_dppt,
-    this.nilai_ipal,
-    this.nilai_spam,
-    this.nilai_dppt,
-    this.message,
-});
+class DashboardState extends Equatable {
+  const DashboardState(
+      {this.status = DashboardStateStatus.initial,
+      this.ipal,
+      this.spam,
+      this.dppt,
+      this.luas_ipal,
+      this.luas_spam,
+      this.luas_dppt,
+      this.nilai_ipal,
+      this.nilai_spam,
+      this.nilai_dppt,
+      this.message,});
 
   final DashboardStateStatus? status;
   final String? ipal;
@@ -37,9 +35,21 @@ extension DashboardInitial on DashboardStateStatus {
   final String? nilai_dppt;
   final String? message;
 
+
+
   @override
   List<Object?> get props => [
-    status, ipal, spam, dppt, luas_ipal, luas_spam, luas_dppt, nilai_ipal, nilai_spam, nilai_dppt, message,
+    status,
+    ipal,
+    spam,
+    dppt,
+    luas_ipal,
+    luas_spam,
+    luas_dppt,
+    nilai_ipal,
+    nilai_spam,
+    nilai_dppt,
+    message,
   ];
 
   DashboardState copyWith({
@@ -54,7 +64,7 @@ extension DashboardInitial on DashboardStateStatus {
     String? nilai_spam,
     String? nilai_dppt,
     String? message,
-}) {
+  }) {
     // TODO: implement copyWith
     return DashboardState(
       status: status ?? this.status,
@@ -71,4 +81,3 @@ extension DashboardInitial on DashboardStateStatus {
     );
   }
 }
-
