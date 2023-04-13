@@ -6,3 +6,7 @@ class KategoriCardEvent extends Equatable{
 }
 
 class ViewKategoriCard extends KategoriCardEvent{}
+
+// class ViewIpalKategori extends KategoriCardEvent{}
+
+

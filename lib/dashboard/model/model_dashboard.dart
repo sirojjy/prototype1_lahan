@@ -19,3 +19,9 @@ class KategoriModel {
     this.luasSegment3
   });
 }
+
+class IssueIpalModel {
+  final String? jenis;
+  final double? jumlahIssue;
+  IssueIpalModel({this.jenis, this.jumlahIssue});
+}

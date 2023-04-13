@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:prototype1_lahan/share/item.dart';
 
 class MyCard extends StatelessWidget {
-  final String titleCard;
-  final String jumlahBidang;
-  final String jumlahLuas;
-  final String jumlahNilai;
+  final String? titleCard;
+  final String? jumlahBidang;
+  final String? jumlahLuas;
+  final String? jumlahNilai;
   final color;
   // final String s= num.toString().replaceAll((regex), '');
 
   const MyCard({Key? key,
-    required this.titleCard,
-    required this.jumlahBidang,
-    required this.jumlahLuas,
-    required this.jumlahNilai,
+    this.titleCard,
+    this.jumlahBidang,
+    this.jumlahLuas,
+    this.jumlahNilai,
     this.color
   }) : super(key: key);
 
@@ -31,7 +31,7 @@ class MyCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(titleCard,
+            Text(titleCard ?? '0',
               style: const TextStyle(
                 color: whiteColor,
                 fontWeight: FontWeight.bold,

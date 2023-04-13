@@ -13,6 +13,7 @@ class KategoriCardState extends Equatable {
   final KategoriCardStatus? status;
   final String? message;
   final List<KategoriModel> dataKategoriCard;
+  // final List<IssueIpalModel> dataIssueIpal;
   final String? luasIpal1;
   final String? luasIpal2;
   final String? luasIpal3;
@@ -26,6 +27,7 @@ class KategoriCardState extends Equatable {
       {this.status = KategoriCardStatus.initial,
         this.message,
         required this.dataKategoriCard,
+        // required this.dataIssueIpal,
         this.luasIpal1,
         this.luasIpal2,
         this.luasIpal3,
@@ -40,6 +42,7 @@ class KategoriCardState extends Equatable {
     status,
     message,
     dataKategoriCard,
+    // dataIssueIpal,
     luasIpal1,
     luasIpal2,
     luasIpal3,
@@ -53,6 +56,7 @@ class KategoriCardState extends Equatable {
     KategoriCardStatus? status,
     String? message,
     List<KategoriModel>? dataKategoriCard,
+    // List<IssueIpalModel>? dataIssueIpal,
     String? luasIpal1,
     String? luasIpal2,
     String? luasIpal3,
@@ -66,6 +70,7 @@ class KategoriCardState extends Equatable {
       status: status ?? this.status,
       message: message ?? this.message,
       dataKategoriCard: dataKategoriCard ?? this.dataKategoriCard,
+      // dataIssueIpal: dataIssueIpal ?? this.dataIssueIpal,
       luasIpal1: luasIpal1 ?? this.luasIpal1,
       luasIpal2: luasIpal2 ?? this.luasIpal2,
       luasIpal3: luasIpal3 ?? this.luasIpal3,

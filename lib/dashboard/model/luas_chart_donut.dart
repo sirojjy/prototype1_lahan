@@ -12,15 +12,14 @@ class LuasChartDonut extends StatefulWidget {
 
 class _LuasChartDonutState extends State<LuasChartDonut> {
   SharedPreferences? pref;
-  var _chartData;
   var _tooltipBehavior;
   _LuasChartDonutState();
 
   @override
   void initState() {
-    _chartData = getChartData();
     _tooltipBehavior = TooltipBehavior(enable: true);
     BlocProvider.of<KategoriCardBloc>(context).add(ViewKategoriCard());
+    getPref();
     super.initState();
   }
   void getPref() async {
@@ -32,6 +31,24 @@ class _LuasChartDonutState extends State<LuasChartDonut> {
     return BlocBuilder<KategoriCardBloc, KategoriCardState>(
         bloc: BlocProvider.of<KategoriCardBloc>(context)..add(ViewKategoriCard()),
         builder: (context, state){
+
+          print('Data Luas IPAL1: ${state.dataKategoriCard[0].luasIpal1}');
+
+          List<IpalLuasData> dataKategoriCard() {
+            var  chartData = <IpalLuasData>[];
+            var listData = [
+              {'IPAL': state.dataKategoriCard[0].luasIpal1, 'label': 'IPAL1'},
+              {'IPAL': state.dataKategoriCard[0].luasIpal2, 'label': 'IPAL2'},
+              {'IPAL': state.dataKategoriCard[0].luasIpal3, 'label': 'IPAL3'}
+            ];
+            for(var i = 0; i<listData.length; i++){
+              chartData.add(IpalLuasData(
+                  jenis:listData[i]['label'].toString(),
+                  jumlahIssue:double.parse(listData[i]['IPAL'].toString())
+              ));
+            }
+            return chartData;
+          }
           return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Container(
@@ -53,10 +70,10 @@ class _LuasChartDonutState extends State<LuasChartDonut> {
                         Legend(isVisible: true, overflowMode: LegendItemOverflowMode.wrap),
                         tooltipBehavior: _tooltipBehavior,
                         series: <CircularSeries>[
-                          DoughnutSeries<IssueData, String>(
-                            dataSource: _chartData,
-                            xValueMapper: (IssueData data, _) => data.jenis,
-                            yValueMapper: (IssueData data, _) => data.jumlahIssue,
+                          DoughnutSeries<IpalLuasData, String>(
+                            dataSource: dataKategoriCard(),
+                            xValueMapper: (IpalLuasData data, _) => data.jenis,
+                            yValueMapper: (IpalLuasData data, _) => data.jumlahIssue,
                             dataLabelSettings: const DataLabelSettings(isVisible: true),
                             enableTooltip: true,
                           )
@@ -66,29 +83,17 @@ class _LuasChartDonutState extends State<LuasChartDonut> {
                   )
               )
           );
+
         }
     );
   }
 
-  List<IssueData> getChartData() {
-    var  chartData = <IssueData>[];
-    var listData = [
-      {'IPAL': 212966, 'label': 'IPAL1'},
-      {'IPAL': 115711, 'label': 'IPAL2'},
-      {'IPAL': 0, 'label': 'IPAL3'}
-    ];
-    for(var i = 0; i<listData.length; i++){
-      chartData.add(IssueData(
-          jenis:listData[i]['label'].toString(),
-          jumlahIssue:double.parse(listData[i]['IPAL'].toString())
-      ));
-    }
-    return chartData;
-  }
+
 }
 
-class IssueData {
+class IpalLuasData {
   final String? jenis;
   final double? jumlahIssue;
-  IssueData({this.jenis, this.jumlahIssue});
+  IpalLuasData({this.jenis, this.jumlahIssue});
 }
+

@@ -59,9 +59,10 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
             nilai_dppt: response[0]['nilai_dppt'],
           )
         );
+
       }
     } catch(error) {
-      print('cek12');
+      // print('cek12');
       emit(
         state.copyWith(
           status: DashboardStateStatus.error

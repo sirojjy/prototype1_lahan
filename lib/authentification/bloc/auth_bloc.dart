@@ -4,7 +4,6 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../share/api_constant.dart';
@@ -57,7 +56,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           status: AuthStateStatus.success,
           )
         );
-        print('data3 ${response['data']['username']}');
+        // print('data3 ${response['data']['username']}');
         await prefs.setString('id', response['data']['id_user']);
         await prefs.setString('username', response['data']['username']);
         await prefs.setString('nama', response['data']['nama']);

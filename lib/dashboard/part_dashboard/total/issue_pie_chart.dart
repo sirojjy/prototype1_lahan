@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-class BidangPieChart extends StatefulWidget {
+class IssuePieChart extends StatefulWidget {
 
-  const BidangPieChart({Key? key}) : super(key: key);
+  const IssuePieChart({Key? key}) : super(key: key);
 
   @override
-  State<BidangPieChart> createState() => _BidangPieChartState();
+  State<IssuePieChart> createState() => _IssuePieChartState();
 }
 
-class _BidangPieChartState extends State<BidangPieChart> {
+class _IssuePieChartState extends State<IssuePieChart> {
 
 
 
   var _chartData;
   var _tooltipBehavior;
 
-  _BidangPieChartState();
+  _IssuePieChartState();
 
   @override
   void initState() {
@@ -28,18 +28,27 @@ class _BidangPieChartState extends State<BidangPieChart> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-        child: Container(
-          // padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      child: Container(
+
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-          ),
+              borderRadius: BorderRadius.circular(5),
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.3),
+                  spreadRadius: 2,
+                  blurRadius: 5,
+                  offset: const Offset(0, 3),
+                ),
+              ]),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SfCircularChart(
+                palette: const [Color(0x0ff43AA8B), Color(0XFFFFE068)],
                 title:
-                ChartTitle(text: 'Persentase Bidang Eligible & Not Eligible'),
+                ChartTitle(text: 'Jumlah Issue/Permasalahan'),
                 legend:
                 Legend(isVisible: true, overflowMode: LegendItemOverflowMode.wrap),
                 tooltipBehavior: _tooltipBehavior,
@@ -55,7 +64,7 @@ class _BidangPieChartState extends State<BidangPieChart> {
               )
             ],
           )
-        )
+      ),
     );
   }
 
@@ -63,8 +72,8 @@ class _BidangPieChartState extends State<BidangPieChart> {
     var  chartData = <IssueData>[];
 
     var listData = [
-      {'data': 20, 'label': 'Eligible'},
-      {'data': 80, 'label': 'Not Eligible'},
+      {'data': 65, 'label': 'Open'},
+      {'data': 99, 'label': 'Close'},
     ];
     for(var i = 0; i<listData.length; i++){
       chartData.add(IssueData(

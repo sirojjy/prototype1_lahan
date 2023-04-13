@@ -1,17 +1,17 @@
-part of 'top_card_bloc.dart';
+part of 'kategori_bloc.dart';
 
 
-enum TopCardStateStatus {initial, success, error, loading}
+enum KategoriStateStatus {initial, success, error, loading}
 
-extension TopCardInitial on TopCardStateStatus {
-  bool get isInitial => this == TopCardStateStatus.initial;
-  bool get success => this == TopCardStateStatus.success;
-  bool get error => this == TopCardStateStatus.error;
-  bool get loading => this == TopCardStateStatus.loading;
+extension TopCardInitial on KategoriStateStatus {
+  bool get isInitial => this == KategoriStateStatus.initial;
+  bool get success => this == KategoriStateStatus.success;
+  bool get error => this == KategoriStateStatus.error;
+  bool get loading => this == KategoriStateStatus.loading;
 }
 
-class TopCardState extends Equatable {
-  final TopCardStateStatus? status;
+class KategoriState extends Equatable {
+  final KategoriStateStatus? status;
   final String? ipal;
   final String? spam;
   final String? dppt;
@@ -23,8 +23,8 @@ class TopCardState extends Equatable {
   final String? nilai_dppt;
   final String? message;
 
-  const TopCardState({
-    this.status = TopCardStateStatus.initial,
+  const KategoriState({
+    this.status = KategoriStateStatus.initial,
     this.ipal,
     this.spam,
     this.dppt,
@@ -42,8 +42,8 @@ class TopCardState extends Equatable {
     status, ipal, spam, dppt, luas_ipal, luas_spam, luas_dppt, nilai_ipal, nilai_spam, nilai_dppt, message,
   ];
 
-  TopCardState copyWith({
-    TopCardStateStatus? status,
+  KategoriState copyWith({
+    KategoriStateStatus? status,
     String? ipal,
     String? spam,
     String? dppt,
@@ -56,7 +56,7 @@ class TopCardState extends Equatable {
     String? message,
   }) {
     // TODO: implement copyWith
-    return TopCardState(
+    return KategoriState(
       status: status ?? this.status,
       ipal: ipal ?? this.ipal,
       spam: spam ?? this.spam,
@@ -71,3 +71,4 @@ class TopCardState extends Equatable {
     );
   }
 }
+

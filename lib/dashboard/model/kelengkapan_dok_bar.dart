@@ -11,8 +11,6 @@ class KelengkapanBidang extends StatefulWidget {
 
 class _KelengkapanBidangState extends State<KelengkapanBidang> {
 
-
-
   var _chartData;
   var _tooltipBehavior;
 

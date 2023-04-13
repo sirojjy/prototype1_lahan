@@ -7,30 +7,27 @@ import 'package:meta/meta.dart';
 import 'package:prototype1_lahan/share/api_constant.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+part 'kategori_event.dart';
+part 'kategori_state.dart';
 
-part 'top_card_event.dart';
-part 'top_card_state.dart';
 
-class TopCardBloc extends Bloc<TopCardEvent, TopCardState> {
-  TopCardBloc() : super(TopCardState()) {
-    on<TopCardEvent>((event, emit) {
-      // TODO: implement event handler
-      on<OnJumlahIpalEvent>(_validateToJumlahIpal);
-    });
+class KategoriBloc extends Bloc<KategoriEvent, KategoriState> {
+  KategoriBloc() : super(KategoriState()) {
+    on<OnKategoriEvent>(_validateKategori);
   }
 
 
-  FutureOr<void> _validateToJumlahIpal(OnJumlahIpalEvent event, Emitter<TopCardState> emit) async{
+  FutureOr<void> _validateKategori(OnKategoriEvent event, Emitter<KategoriState> emit) async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     emit(
         state.copyWith(
-            status: TopCardStateStatus.loading
+            status: KategoriStateStatus.loading
         )
     );
 
     try{
-      var url = Uri.parse(ApiConstant.totalCard);
+      var url = Uri.parse(ApiConstant.kategoriCard);
       var request = await http.post(
           url,
           body: {
@@ -42,13 +39,13 @@ class TopCardBloc extends Bloc<TopCardEvent, TopCardState> {
         emit(
             state.copyWith(
               message: response['error_msg'],
-              status: TopCardStateStatus.error,
+              status: KategoriStateStatus.error,
             )
         );
       } else {
         emit(
             state.copyWith(
-              status: TopCardStateStatus.success,
+              status: KategoriStateStatus.success,
               ipal: response[0]['ipal'],
               spam: response[0]['spam'],
               dppt: response[0]['dppt'],
@@ -65,10 +62,11 @@ class TopCardBloc extends Bloc<TopCardEvent, TopCardState> {
       print('cek12');
       emit(
           state.copyWith(
-              status: TopCardStateStatus.error
+              status: KategoriStateStatus.error
           )
       );
     }
   }
 }
+
 

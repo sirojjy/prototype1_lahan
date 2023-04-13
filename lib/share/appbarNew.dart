@@ -8,30 +8,31 @@ class AppbarNew extends StatelessWidget {
      required this.title,
    }) :
          super(key: key);
-
-
   // final SidebarXController _controller;
-
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: whiteColor
+        color: darkColor
       ),
-        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            Image.asset('assets/images/logo-ikn.png',
+              height: 25,
+            ),
             Text(title,
               style: const TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: whiteColor,
               ),
             ),
             Container(
               padding: const EdgeInsets.all(8),
               child:
-                Icon(Icons.menu)
+                Icon(Icons.menu,color: whiteColor,)
               // SidebarX(
               //   controller: _controller,
               //   theme: SidebarXTheme(

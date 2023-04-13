@@ -230,24 +230,8 @@ class _InventarisasiState extends State<Inventarisasi> {
                 child:
               Column(
                 children: [
-                  // Row(
-                  //   children: [
-                  //       Expanded(
-                  //       child: Text(" "),
-                  //     ),
-                  //     ElevatedButton(
-                  //       onPressed: () => _create(),
-                  //       child: const Icon(Icons.add),
-                  //     ),
-                  //   ],
-                  // ),
-                  // const SizedBox(
-                  //   height: 10,
-                  // ),
                   AppbarNew(title: 'Inventarisasi'),
-
                   const SizedBox(height: 20,),
-
                   Expanded(
                     child: StreamBuilder(
                       stream: _inventarisasi.snapshots(), //build connection

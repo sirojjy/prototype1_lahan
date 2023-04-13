@@ -28,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: backgroundColor,
+        backgroundColor: loginBackgroundColor,
         body: SafeArea(
             child: Center(
               child: BlocConsumer<AuthBloc, AuthState>(
@@ -42,26 +42,32 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       //Logo
+                      Center(
+                        child: Image.asset('assets/images/logo-ikn.png',
+                          height: 100,
+                        ),
+                      ),
+                      const SizedBox(height: 30,),
                       Text(
                           'E - Lahan',
                           style: GoogleFonts.bebasNeue(
                             textStyle: const TextStyle(
-                                fontSize: 40
+                                fontSize: 40, color: whiteColor,
                             ),
-                          )
+                          ),
                       ),
-                      const SizedBox(height: 20,),
+                      const SizedBox(height: 10,),
 
                       //Hallo
                       Text(
                         'Silahkan Login',
                         style: GoogleFonts.bebasNeue(
                           textStyle: const TextStyle(
-                              fontSize: 24
+                              fontSize: 24, color: whiteColor,
                           ),
                         ),
                       ),
-                      const SizedBox(height: 40,),
+                      const SizedBox(height: 20,),
 
                       //Username
                       Padding(
@@ -134,8 +140,9 @@ class _LoginPageState extends State<LoginPage> {
                           child: Container(
                             padding: const EdgeInsets.all(20),
                             decoration: BoxDecoration(
-                                color: primaryColor,
-                                borderRadius: BorderRadius.circular(12)
+                                color: primary2Color,
+                                borderRadius: BorderRadius.circular(12),
+                              border: Border.all(color: darkColor)
                             ),
                             child: const Center(
                               child: Text(
@@ -157,7 +164,7 @@ class _LoginPageState extends State<LoginPage> {
                         'Lupa password?',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: primaryColor,
+                          color: whiteColor,
                         ),
                       ),
                     ],
